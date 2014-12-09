@@ -1,0 +1,12 @@
+<Solution>
+  <PropertyGroup Name="FishDemo" Version="2.0.5.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="ipad" />
+        <Folder Name="ipadhd" />
+        <Folder Name="iphone" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
