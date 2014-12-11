@@ -1,9 +1,9 @@
-#ifndef __Main_Menu_SCENE_H__
-#define __Main_Menu_SCENE_H__
+#ifndef __GAME_SCENE_H__
+#define __GAME_SCENE_H__
 
 #include "cocos2d.h"
 
-class MainMenuScene : public cocos2d::Layer
+class GameScene : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -14,10 +14,10 @@ public:
 
     
     // implement the "static create()" method manually
-    CREATE_FUNC(MainMenuScene);
+    CREATE_FUNC(GameScene);
     
 private:
-    void GoToGameScene(cocos2d::Ref *sender);
+    //void GoToGameScene(cocos2d::Ref *sender);
 };
 
-#endif // __Main_Menu_SCENE_H__
+#endif // __GAME_SCENE_H__
