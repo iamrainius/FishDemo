@@ -1,6 +1,8 @@
 #include "GameScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "GameOverScene.h"
+#include "Definitions.h"
 
 USING_NS_CC;
 
@@ -34,6 +36,8 @@ bool GameScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    this->scheduleOnce(schedule_selector(GameScene::GoToGameOverScene), 5);
+    
     auto background = Sprite::create("mainmenu_bg.png");
     background->setColor(Color3B::GRAY);
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
@@ -43,8 +47,9 @@ bool GameScene::init()
     return true;
 }
 
-//void GameScene::GoToGameScene(cocos2d::Ref *sender)
-//{
-//    
-//}
+void GameScene::GoToGameOverScene(float dt)
+{
+    auto scene = GameOverScene::createScene();
+    Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
+}
 

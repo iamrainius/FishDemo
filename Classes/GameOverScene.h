@@ -1,9 +1,9 @@
-#ifndef __GAME_SCENE_H__
-#define __GAME_SCENE_H__
+#ifndef __GAME_OVER_SCENE_H__
+#define __GAME_OVER_SCENE_H__
 
 #include "cocos2d.h"
 
-class GameScene : public cocos2d::Layer
+class GameOverScene : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -14,10 +14,10 @@ public:
 
     
     // implement the "static create()" method manually
-    CREATE_FUNC(GameScene);
+    CREATE_FUNC(GameOverScene);
     
 private:
-    void GoToGameOverScene(float dt);
+    void GoToGameScene(cocos2d::Ref *sender);
 };
 
-#endif // __GAME_SCENE_H__
+#endif // __GAME_OVER_SCENE_H__
