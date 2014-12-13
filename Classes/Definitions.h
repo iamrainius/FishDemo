@@ -12,4 +12,9 @@
 #define TRANSITION_TIME 0.5
 #define DISPLAY_TIME_SPLASH_SCENE 2
 
+#define HORIZONTAL_BLOCKS 10
+#define VERTICAL_BLOCKS 10
+
+#define GAP_SIZE 5 // pixels
+
 #endif // __DEFINITIONS_H__

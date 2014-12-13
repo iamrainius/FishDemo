@@ -18,6 +18,10 @@ public:
     
 private:
     void GoToGameOverScene(float dt);
+    
+    void InitialBlocks(cocos2d::Size size);
+    
+    std::string colors[5] = { "block_blue.png","block_red.png","block_green.png","block_yellow.png","block_purple.png" };
 };
 
 #endif // __GAME_SCENE_H__
