@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include "GameOverScene.h"
 #include "Definitions.h"
+#include "FishPool.h"
 
 USING_NS_CC;
 
@@ -11,11 +12,16 @@ using namespace cocostudio::timeline;
 Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
+//    auto scene = Scene::createWithPhysics();
     auto scene = Scene::create();
+//    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+//    scene->getPhysicsWorld()->setGravity(Vect(0, -1000));
+
     
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
-
+//    layer->SetPhysicsWorld(scene->getPhysicsWorld());
+    
     // add layer as a child to scene
     scene->addChild(layer);
 
@@ -38,16 +44,67 @@ bool GameScene::init()
     
     //this->scheduleOnce(schedule_selector(GameScene::GoToGameOverScene), 5);
     
-    auto background = Sprite::create("mainmenu_bg.png");
+    auto background = Sprite::create("game_bg.png");
     background->setColor(Color3B::GRAY);
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
     this->addChild(background);
     
-    InitialBlocks(visibleSize);
+//    this->InitPhysicsEdge(visibleSize, Point(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
     
+//    auto contactListener = EventListenerPhysicsContact::create();
+//    contactListener->onContactBegin = CC_CALLBACK_1(GameScene::onContactBegin, this);
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+    
+    auto fishPool = FishPool::create(visibleSize, HORIZONTAL_BLOCKS, VERTICAL_BLOCKS, this);
+    
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->setSwallowTouches(true);
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+    
+    fishPool->addEventListener(touchListener);
+    
+    this->scheduleUpdate();
     
     return true;
 }
+
+
+bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    auto target = static_cast<Sprite*>(event->getCurrentTarget());
+    Point locationInNode = target->convertToNodeSpace(touch->getLocation());
+    Size s = target->getContentSize();
+    Rect rect = Rect(0, 0, s.width, s.height);
+    
+    // 点击范围判断检测
+    if (rect.containsPoint(locationInNode))
+    {
+        log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
+        removeChild(target);
+        return true;
+    }
+
+    return false;
+}
+
+
+void GameScene::AddFish(cocos2d::Ref *sender)
+{
+
+}
+
+//void GameScene::InitPhysicsEdge(const Size& size, const Vec2& pos)
+//{
+//    auto edgeBody = PhysicsBody::createEdgeBox(size, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+//    edgeBody->setCollisionBitmask(OBSTACLE_COLLISION_BITMASK);
+//    edgeBody->setContactTestBitmask(true);
+//    
+//    auto edgeNode = Node::create();
+//    edgeNode->setPosition(pos);
+//    edgeNode->setPhysicsBody(edgeBody);
+//    this->addChild(edgeNode);
+//
+//}
 
 void GameScene::GoToGameOverScene(float dt)
 {
@@ -55,37 +112,24 @@ void GameScene::GoToGameOverScene(float dt)
     Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
 
-void GameScene::InitialBlocks(Size size)
+
+//bool GameScene::onContactBegin(cocos2d::PhysicsContact &contact)
+//{
+//    PhysicsBody *a = contact.getShapeA()->getBody();
+//    PhysicsBody *b = contact.getShapeB()->getBody();
+//    
+//    if ((FISH_COLLISION_BITMASK == a->getCollisionBitmask() && OBSTACLE_COLLISION_BITMASK == b->getCollisionBitmask()) ||
+//        (FISH_COLLISION_BITMASK == b->getCollisionBitmask() && OBSTACLE_COLLISION_BITMASK == a->getCollisionBitmask()))
+//    {
+////        if (fish != NULL) {
+////            a->setGravityEnable(false);
+////        }
+//    }
+//    
+//    return true;
+//}
+
+void GameScene::update(float dt)
 {
-    // calculate block size
-    float blockSize = (size.width -  GAP_SIZE * ( HORIZONTAL_BLOCKS + 1 )) / HORIZONTAL_BLOCKS;
-    
-    // get visible origin of game scence
-    Vec2 origin =  Director::getInstance()->getVisibleOrigin();
-    
-    // calculate anchor point
-    float x0 = origin.x;
-    float y0 = origin.y;
-    
-    for(int j = 0; j < VERTICAL_BLOCKS ; j++)
-    {
-        for(int i = 0 ; i < HORIZONTAL_BLOCKS ; i++)
-        {
-            // draw first block
-            float blockOriginX = x0 + blockSize / 2 + GAP_SIZE + i*(blockSize + GAP_SIZE);
-            float blockOriginY = y0 + blockSize / 2 + GAP_SIZE + j*(blockSize + GAP_SIZE);
-        
-            int blockColor = random(0, 4);
 
-            auto block = Sprite::create(colors[blockColor]);
-            block->setPosition(blockOriginX, blockOriginY);
-            block->setScale(blockSize/120);
-        
-            this->addChild(block);
-        }
-    }
-    
-    
-    
 }
-

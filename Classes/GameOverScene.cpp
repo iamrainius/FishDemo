@@ -41,13 +41,6 @@ bool GameOverScene::init()
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
     this->addChild(background);
     
-    auto playItem = MenuItemImage::create("try_again.png", "try_again_pressed.png", CC_CALLBACK_1(GameOverScene::GoToGameScene, this));
-    playItem->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 4 + origin.y));
-    
-    auto menu = Menu::create(playItem, NULL);
-    menu->setPosition(Point::ZERO);
-    this->addChild(menu);
-    
     return true;
 }
 

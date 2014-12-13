@@ -28,6 +28,10 @@
 		3F917F721A3B462000893FB7 /* block_purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F917F6D1A3B462000893FB7 /* block_purple.png */; };
 		3F917F731A3B462000893FB7 /* block_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F917F6E1A3B462000893FB7 /* block_red.png */; };
 		3F917F741A3B462000893FB7 /* block_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F917F6F1A3B462000893FB7 /* block_yellow.png */; };
+		3FCB72861A3C2ABE00D8FC15 /* Fish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FCB72851A3C2ABE00D8FC15 /* Fish.cpp */; };
+		3FCB72891A3C4AF300D8FC15 /* FishPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FCB72871A3C4AF300D8FC15 /* FishPool.cpp */; };
+		3FCB728F1A3C82D900D8FC15 /* game_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB728E1A3C82D900D8FC15 /* game_bg.png */; };
+		3FCB72921A3C863400D8FC15 /* FishSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FCB72901A3C863400D8FC15 /* FishSprite.cpp */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -101,6 +105,13 @@
 		3F917F6D1A3B462000893FB7 /* block_purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_purple.png; sourceTree = "<group>"; };
 		3F917F6E1A3B462000893FB7 /* block_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_red.png; sourceTree = "<group>"; };
 		3F917F6F1A3B462000893FB7 /* block_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_yellow.png; sourceTree = "<group>"; };
+		3FCB72841A3C2A4700D8FC15 /* Fish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fish.h; sourceTree = "<group>"; };
+		3FCB72851A3C2ABE00D8FC15 /* Fish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fish.cpp; sourceTree = "<group>"; };
+		3FCB72871A3C4AF300D8FC15 /* FishPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FishPool.cpp; sourceTree = "<group>"; };
+		3FCB72881A3C4AF300D8FC15 /* FishPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishPool.h; sourceTree = "<group>"; };
+		3FCB728E1A3C82D900D8FC15 /* game_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_bg.png; sourceTree = "<group>"; };
+		3FCB72901A3C863400D8FC15 /* FishSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FishSprite.cpp; sourceTree = "<group>"; };
+		3FCB72911A3C863400D8FC15 /* FishSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishSprite.h; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
@@ -262,6 +273,7 @@
 		3F6E23F01A389A1900EFAABA /* iphone */ = {
 			isa = PBXGroup;
 			children = (
+				3FCB728E1A3C82D900D8FC15 /* game_bg.png */,
 				3F917F6B1A3B462000893FB7 /* block_blue.png */,
 				3F917F6C1A3B462000893FB7 /* block_green.png */,
 				3F917F6D1A3B462000893FB7 /* block_purple.png */,
@@ -292,6 +304,12 @@
 				3F6E23E81A388D6000EFAABA /* SplashScene.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				3FCB72841A3C2A4700D8FC15 /* Fish.h */,
+				3FCB72851A3C2ABE00D8FC15 /* Fish.cpp */,
+				3FCB72871A3C4AF300D8FC15 /* FishPool.cpp */,
+				3FCB72881A3C4AF300D8FC15 /* FishPool.h */,
+				3FCB72901A3C863400D8FC15 /* FishSprite.cpp */,
+				3FCB72911A3C863400D8FC15 /* FishSprite.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -406,7 +424,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = GACSN8R278;
 					};
 				};
 			};
@@ -435,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FCB728F1A3C82D900D8FC15 /* game_bg.png in Resources */,
 				3F917F741A3B462000893FB7 /* block_yellow.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				3F917F711A3B462000893FB7 /* block_green.png in Resources */,
@@ -484,14 +503,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FCB72861A3C2ABE00D8FC15 /* Fish.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				3F6E23ED1A3892D500EFAABA /* MainMenuScene.cpp in Sources */,
 				3F6E23E91A388D6000EFAABA /* SplashScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				3F04AD3B1A39EC1200F00576 /* GameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				3FCB72921A3C863400D8FC15 /* FishSprite.cpp in Sources */,
 				3F04AD421A39F13700F00576 /* GameOverScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				3FCB72891A3C4AF300D8FC15 /* FishPool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
