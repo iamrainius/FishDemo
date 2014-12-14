@@ -17,11 +17,10 @@ public:
     static FishPool* create(cocos2d::Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
     
     FishPool(cocos2d::Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
-    
-    void addEventListener(cocos2d::EventListenerTouchOneByOne* listener);
-    
     void PutFish(Fish* fish, int col, int row);
     Fish* GetFish(int col, int row);
+    void clearFishes(int col, int row);
+    void ProcessTouch(cocos2d::Point location);
     
 private:
     int cols;

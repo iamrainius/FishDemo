@@ -19,6 +19,7 @@ public:
     cocos2d::Sprite* getSprite();
     
 private:
+    int type;
     const std::string colors[5] = { "block_blue.png","block_red.png","block_green.png","block_yellow.png","block_purple.png" };
     cocos2d::Layer *layer;
     cocos2d::Size visibleSize;

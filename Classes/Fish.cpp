@@ -13,23 +13,19 @@ USING_NS_CC;
 
 Fish::Fish(cocos2d::Vec2& pos, float size, Layer *layer)
 {
+    
     isFalling = true;
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
     
-    fishSprite = Sprite::create(GetRandomFishImage());
+    type = random(0, 4);
+    fishSprite = Sprite::create(colors[type]);
     fishSprite->setPosition(Point(pos.x + origin.x, pos.y + origin.y));
     
     float scale = size / fishSprite->getContentSize().width;
     fishSprite->setScale(scale, scale);
     
-    auto fishBody = PhysicsBody::createBox(Size(Point(fishSprite->getContentSize().width, fishSprite->getContentSize().width)));
-    fishBody->setCollisionBitmask(FISH_COLLISION_BITMASK);
-    fishBody->setContactTestBitmask(true);
-    fishBody->setGravityEnable(true);
-    fishSprite->setPhysicsBody(fishBody);
     layer->addChild(fishSprite, 100);
-    
     this->layer = layer;
 
 }
@@ -44,12 +40,6 @@ void Fish::QuitFromScene()
 Sprite* Fish::getSprite()
 {
     return fishSprite;
-}
-
-std::string Fish::GetRandomFishImage()
-{
-    int blockColor = random(0, 4);
-    return colors[blockColor];
 }
 
 void Fish::Fall()

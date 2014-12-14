@@ -49,20 +49,13 @@ bool GameScene::init()
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
     this->addChild(background);
     
-//    this->InitPhysicsEdge(visibleSize, Point(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-    
-//    auto contactListener = EventListenerPhysicsContact::create();
-//    contactListener->onContactBegin = CC_CALLBACK_1(GameScene::onContactBegin, this);
-//    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
-    
-    auto fishPool = FishPool::create(visibleSize, HORIZONTAL_BLOCKS, VERTICAL_BLOCKS, this);
+    fishPool = FishPool::create(visibleSize, HORIZONTAL_BLOCKS, VERTICAL_BLOCKS, this);
     
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
     touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
-    
-    fishPool->addEventListener(touchListener);
-    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+
     this->scheduleUpdate();
     
     return true;
@@ -71,7 +64,7 @@ bool GameScene::init()
 
 bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-    auto target = static_cast<Sprite*>(event->getCurrentTarget());
+    auto target = event->getCurrentTarget();
     Point locationInNode = target->convertToNodeSpace(touch->getLocation());
     Size s = target->getContentSize();
     Rect rect = Rect(0, 0, s.width, s.height);
@@ -80,7 +73,7 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     if (rect.containsPoint(locationInNode))
     {
         log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
-        removeChild(target);
+        fishPool->ProcessTouch(locationInNode);
         return true;
     }
 

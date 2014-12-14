@@ -44,14 +44,10 @@ FishPool* FishPool::create(Size& visibleSize, int cols, int rows, cocos2d::Layer
     return fp;
 }
 
-void FishPool::addEventListener(EventListenerTouchOneByOne* listener)
+
+void FishPool::ProcessTouch(cocos2d::Point location)
 {
-    for (int i = 0; i < rows * cols; i++) {
-        if (fishes[i] != NULL) {
-            Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener->clone(), fishes[i]->getSprite());
-        }
-    }
-    
+
 }
 
 int FishPool::FindIndex(int col, int row)
