@@ -86,41 +86,11 @@ void GameScene::AddFish(cocos2d::Ref *sender)
 
 }
 
-//void GameScene::InitPhysicsEdge(const Size& size, const Vec2& pos)
-//{
-//    auto edgeBody = PhysicsBody::createEdgeBox(size, PHYSICSBODY_MATERIAL_DEFAULT, 3);
-//    edgeBody->setCollisionBitmask(OBSTACLE_COLLISION_BITMASK);
-//    edgeBody->setContactTestBitmask(true);
-//    
-//    auto edgeNode = Node::create();
-//    edgeNode->setPosition(pos);
-//    edgeNode->setPhysicsBody(edgeBody);
-//    this->addChild(edgeNode);
-//
-//}
-
 void GameScene::GoToGameOverScene(float dt)
 {
     auto scene = GameOverScene::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
-
-
-//bool GameScene::onContactBegin(cocos2d::PhysicsContact &contact)
-//{
-//    PhysicsBody *a = contact.getShapeA()->getBody();
-//    PhysicsBody *b = contact.getShapeB()->getBody();
-//    
-//    if ((FISH_COLLISION_BITMASK == a->getCollisionBitmask() && OBSTACLE_COLLISION_BITMASK == b->getCollisionBitmask()) ||
-//        (FISH_COLLISION_BITMASK == b->getCollisionBitmask() && OBSTACLE_COLLISION_BITMASK == a->getCollisionBitmask()))
-//    {
-////        if (fish != NULL) {
-////            a->setGravityEnable(false);
-////        }
-//    }
-//    
-//    return true;
-//}
 
 void GameScene::update(float dt)
 {

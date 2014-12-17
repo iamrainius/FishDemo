@@ -9,8 +9,10 @@
 #ifndef __FISH_POOL_H__
 #define __FISH_POOL_H__
 
+#include <list>
 #include "Fish.h"
 
+using namespace std;
 class FishPool
 {
 public:
@@ -27,8 +29,14 @@ private:
     int rows;
     Fish** fishes;
     
+    int fishSize;
+    
     int FindIndex(int col, int row);
     cocos2d::Vec2 FindPosition(int index);
+    void RemoveContinuousFishes(int fishIndex);
+    vector<int> GetNeibours(int index);
+    bool contains(vector<int>& v, int val);
+    int vectorSize(vector<int>& v);
 };
 
 #endif /* __FISH_POOL_H__ */

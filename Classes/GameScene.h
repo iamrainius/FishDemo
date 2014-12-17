@@ -18,7 +18,7 @@ public:
     CREATE_FUNC(GameScene);
     
 private:
-    private FishPool* fishPool;
+    FishPool* fishPool;
     
     void GoToGameOverScene(float dt);
     void AddFish(cocos2d::Ref *sender);

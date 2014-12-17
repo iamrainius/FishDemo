@@ -24,10 +24,25 @@ Fish::Fish(cocos2d::Vec2& pos, float size, Layer *layer)
     
     float scale = size / fishSprite->getContentSize().width;
     fishSprite->setScale(scale, scale);
-    
+    fishPos = Vec2(fishSprite->getPositionX(), fishSprite->getPositionY());
     layer->addChild(fishSprite, 100);
     this->layer = layer;
 
+}
+
+int Fish::GetType()
+{
+    return type;
+}
+
+Point Fish::GetFishPosition()
+{
+    return fishPos;
+}
+
+Size Fish::GetFishSize()
+{
+    return fishSprite->getContentSize();
 }
 
 void Fish::QuitFromScene()
