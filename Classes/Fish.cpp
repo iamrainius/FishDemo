@@ -13,6 +13,7 @@ USING_NS_CC;
 
 Fish::Fish(cocos2d::Vec2& pos, float size, Layer *layer)
 {
+    this->fishPos = pos;
     
     isFalling = true;
     visibleSize = Director::getInstance()->getVisibleSize();
@@ -23,11 +24,18 @@ Fish::Fish(cocos2d::Vec2& pos, float size, Layer *layer)
     fishSprite->setPosition(Point(pos.x + origin.x, pos.y + origin.y));
     
     float scale = size / fishSprite->getContentSize().width;
-    fishSprite->setScale(scale, scale);
+    fishSprite->setScale(scale);
     fishPos = Vec2(fishSprite->getPositionX(), fishSprite->getPositionY());
     layer->addChild(fishSprite, 100);
+    
     this->layer = layer;
 
+}
+
+void Fish::MoveTo(cocos2d::Vec2 pos)
+{
+    this->fishPos = pos;
+    fishSprite->setPosition(fishPos);
 }
 
 int Fish::GetType()

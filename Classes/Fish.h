@@ -13,21 +13,27 @@ class Fish
 {
 public:
     Fish(cocos2d::Vec2& pos, float size, cocos2d::Layer *layer);
+    
     void Fall();
+    
     void StopFalling();
+    
     void QuitFromScene();
     
     cocos2d::Sprite* getSprite();
     
     cocos2d::Point GetFishPosition();
+    
     cocos2d::Size GetFishSize();
     
+    void MoveTo(cocos2d::Vec2 pos);
+    
     int GetType();
-
+    
     cocos2d::Sprite *fishSprite;
     int type;
 private:
-    
+    std::string colors[5] = { "block_blue.png", "block_green.png", "block_purple.png", "block_red.png", "block_yellow.png" };
     cocos2d::Layer *layer;
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;

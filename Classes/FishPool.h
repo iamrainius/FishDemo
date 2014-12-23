@@ -28,20 +28,29 @@ private:
     int cols;
     int rows;
     Fish** fishes;
-    
     int fishSize;
+    cocos2d::Vector<cocos2d::SpriteFrame*> fishFrames[5];
+    cocos2d::Size visibleSize;
     
     int FindIndex(int col, int row);
+    
     cocos2d::Vec2 FindPosition(int index);
+    
     void RemoveContinuousFishes(int fishIndex);
+    
     vector<int> GetNeibours(int index);
+    
     bool contains(vector<int>& v, int val);
+    
     int vectorSize(vector<int>& v);
+    
     void setupFrames();
+    
     void initPool(cocos2d::Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
     
-    cocos2d::Vector<cocos2d::SpriteFrame*> fishFrames[5];
+    void removeFish(int index);
 
+    std::vector<int> getAbove(int index);
 };
 
 #endif /* __FISH_POOL_H__ */

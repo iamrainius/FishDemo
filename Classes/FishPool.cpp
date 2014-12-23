@@ -69,14 +69,16 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
         cursor++;
     }
     
+    // 从场景中移除点中的鱼
     for (int j = 0; j < continuous.size(); j++) {
-        Fish* fish = fishes[continuous.at(j)];
-        fish->QuitFromScene();
         
-        auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
-        auto animate = Animate::create(fishAnimation);
-        fish->fishSprite->setLocalZOrder(200);
-        fish->fishSprite->runAction(animate);
+        removeFish(continuous.at(j));
+        
+//        动画，先不管
+//        auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
+//        auto animate = Animate::create(fishAnimation);
+//        fish->fishSprite->setLocalZOrder(200);
+//        fish->fishSprite->runAction(animate);
         
         //        animate->
         //        Fish* fish = fishes[j];
@@ -84,6 +86,51 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
         //        delete fish;
     }
     
+    // 计算下落
+    for (int i = 0; i < continuous.size(); i++) {
+        vector<int> aboves = getAbove(continuous.at(i));
+        if (aboves.size() <= 1)
+        {
+            continue;
+        }
+        
+        
+        for (int j = 0; j < aboves.size() - 1; j++) {
+            int index = aboves.at(j);
+            fishes[index] = fishes[aboves.at(j + 1)];
+            fishes[aboves.at(j + 1)] = NULL;
+            
+            if (fishes[index] != NULL) {
+                Vec2 logicPos = FindPosition(index);
+                Vec2 pos(logicPos.x * fishSize + fishSize / 2, logicPos.y * fishSize + fishSize / 2 + visibleSize.height * 0.18);
+                fishes[index]->MoveTo(pos);
+            }
+            
+        }
+    }
+    
+}
+
+vector<int> FishPool::getAbove(int index)
+{
+    vector<int> aboves;
+    aboves.push_back(index);
+    Vec2 pos = FindPosition(index);
+    
+    int up = 0;
+    int count = 0;
+    while ((up = FindIndex(pos.x, pos.y + (++count))) < cols * rows && up >= 0) {
+        aboves.push_back(up);
+    }
+    
+    return aboves;
+}
+
+void FishPool::removeFish(int index)
+{
+    fishes[index]->QuitFromScene();
+    delete fishes[index];
+    fishes[index] = NULL;
 }
 
 
@@ -185,6 +232,7 @@ int FishPool::vectorSize(vector<int>& v)
 
 void FishPool::initPool(Size& visibleSize, int cols, int rows, cocos2d::Layer* layer)
 {
+    this->visibleSize = visibleSize;
     this->cols = cols;
     this->rows = rows;
     fishes = new PFish[cols * rows];
@@ -198,8 +246,8 @@ void FishPool::initPool(Size& visibleSize, int cols, int rows, cocos2d::Layer* l
             
             float size = visibleSize.width / HORIZONTAL_BLOCKS;
             Vec2 pos(col * size + size / 2, row * size + size / 2 + visibleSize.height * 0.18);
-            fishSize = size * 1.8f;
-            fishes[i] = new Fish(pos, size * 1.8f, layer);
+            fishSize = size;
+            fishes[i] = new Fish(pos, size, layer);
         }
         
     }
