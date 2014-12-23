@@ -38,7 +38,7 @@ private:
     bool contains(vector<int>& v, int val);
     int vectorSize(vector<int>& v);
     void setupFrames();
-    void initPool(Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
+    void initPool(cocos2d::Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
     
     cocos2d::Vector<cocos2d::SpriteFrame*> fishFrames[5];
 
