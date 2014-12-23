@@ -12,15 +12,10 @@ using namespace cocostudio::timeline;
 Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
-//    auto scene = Scene::createWithPhysics();
     auto scene = Scene::create();
-//    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-//    scene->getPhysicsWorld()->setGravity(Vect(0, -1000));
-
     
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
-//    layer->SetPhysicsWorld(scene->getPhysicsWorld());
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -45,8 +40,11 @@ bool GameScene::init()
     //this->scheduleOnce(schedule_selector(GameScene::GoToGameOverScene), 5);
     
     auto background = Sprite::create("game_bg.png");
+    const float ratio = visibleSize.width / background->getContentSize().width;
     background->setColor(Color3B::GRAY);
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
+    background->setScale(ratio);
+    
     this->addChild(background);
     
     fishPool = FishPool::create(visibleSize, HORIZONTAL_BLOCKS, VERTICAL_BLOCKS, this);
@@ -57,6 +55,7 @@ bool GameScene::init()
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 
     this->scheduleUpdate();
+
     
     return true;
 }

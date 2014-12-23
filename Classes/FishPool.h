@@ -37,6 +37,11 @@ private:
     vector<int> GetNeibours(int index);
     bool contains(vector<int>& v, int val);
     int vectorSize(vector<int>& v);
+    void setupFrames();
+    void initPool(Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
+    
+    cocos2d::Vector<cocos2d::SpriteFrame*> fishFrames[5];
+
 };
 
 #endif /* __FISH_POOL_H__ */

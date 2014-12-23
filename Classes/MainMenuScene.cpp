@@ -36,13 +36,18 @@ bool MainMenuScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    auto background = Sprite::create("mainmenu_bg.png");
+    auto background = Sprite::create("main_menu_bg.png");
+    
+    const float ratio = visibleSize.width / background->getContentSize().width;
+    
     background->setColor(Color3B::GRAY);
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
+    background->setScale(ratio);
     this->addChild(background);
     
-    auto playItem = MenuItemImage::create("play_button.png", "play_button_pressed.png", CC_CALLBACK_1(MainMenuScene::GoToGameScene, this));
-    playItem->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 4 + origin.y));
+    auto playItem = MenuItemImage::create("play_normal.png", "play_pressed.png", CC_CALLBACK_1(MainMenuScene::GoToGameScene, this));
+    playItem->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height * 0.18 + origin.y));
+    playItem->setScale(ratio);
     
     auto menu = Menu::create(playItem, NULL);
     menu->setPosition(Point::ZERO);
