@@ -51,6 +51,10 @@ private:
     void removeFish(int index);
 
     std::vector<int> getAbove(int index);
+    
+    void funCallback(int index, std::vector<int>& fs);
+    
+    void fall(std::vector<int> fs);
 };
 
 #endif /* __FISH_POOL_H__ */
