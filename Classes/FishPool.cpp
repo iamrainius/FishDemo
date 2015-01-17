@@ -84,15 +84,15 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
         fish->fishSprite->runAction(sequence);
     }
     
-//    fall(continuous);
-    
 }
 
 void FishPool::funCallback(int index, std::vector<int>& fs)
 {
+    log("funCallback: index=%d, size=%d", index, (int) fs.size());
     removeFish(fs[index]);
     
     if (index == fs.size() - 1) {
+        log("funCallback: fall");
         fall(fs);
     }
 }
@@ -109,6 +109,8 @@ void FishPool::fall(std::vector<int> fs)
         spaces.push(fs.at(i));
         pool.insert(fs.at(i));
     }
+    
+    vector<int> toFall;
     
     while (!spaces.empty()) {
         int index = spaces.front();
@@ -142,12 +144,21 @@ void FishPool::fall(std::vector<int> fs)
                 if (fishes[aboveIndex] != NULL) {
                     Vec2 logicPos = FindPosition(aboveIndex);
                     Vec2 pos(logicPos.x * fishSize + fishSize / 2, logicPos.y * fishSize + fishSize / 2 + visibleSize.height * 0.18);
-                    fishes[aboveIndex]->MoveTo(pos);
+                    fishes[aboveIndex]->SetTarget(pos.x, pos.y);
+                    toFall.push_back(aboveIndex);
                 }
                 
             }
             pool.erase(index);
             
+        }
+        
+    }
+    
+    for (int i = 0; i < toFall.size(); i++) {
+        Fish* ff = fishes[toFall.at(i)];
+        if (ff != NULL) {
+            ff->MoveToTarget();
         }
     }
 }

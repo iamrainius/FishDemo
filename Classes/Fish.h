@@ -26,9 +26,11 @@ public:
     
     cocos2d::Size GetFishSize();
     
-    void MoveTo(cocos2d::Vec2 pos);
+    void MoveToTarget();
     
     int GetType();
+    
+    void SetTarget(float x, float y);
     
     cocos2d::Sprite *fishSprite;
     int type;
@@ -44,6 +46,8 @@ private:
     std::string GetRandomFishImage();
     
     bool isFalling;
+    
+    void onActionFinished();
 
 };
 
