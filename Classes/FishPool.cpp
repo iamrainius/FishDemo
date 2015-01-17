@@ -49,119 +49,18 @@ void FishPool::ProcessTouch(cocos2d::Point location)
 
 void FishPool::RemoveContinuousFishes(int fishIndex)
 {
-    vector<int> continuous;
     
-    int cursor = 0;
-    continuous.push_back(fishIndex);
-    
-    while (cursor < continuous.size()) {
-        
-        vector<int> neibours = GetNeibours(continuous.at(cursor));
-        log("neibours size: %lu", neibours.size());
-        
-        for (int i = 0; i < neibours.size(); i++) {
-            int index = neibours.at(i);
-            if (!contains(continuous, index)) {
-                continuous.push_back(index);
-            }
-        }
-        
-        log("Continuous size: %lu", continuous.size());
-        cursor++;
-    }
-    
-    // 从场景中移除点中的鱼
-    for (int j = 0; j < continuous.size(); j++) {
-        
-        auto fish = fishes[continuous.at(j)];
-        
-//        动画，先不管
-        auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
-        auto animate = Animate::create(fishAnimation);
-        auto func = CallFunc::create(CC_CALLBACK_0(FishPool::funCallback, this, j, continuous));
-        auto sequence = Sequence::create(animate, func, NULL);
-        fish->fishSprite->setLocalZOrder(200);
-        fish->fishSprite->runAction(sequence);
-    }
     
 }
 
 void FishPool::funCallback(int index, std::vector<int>& fs)
 {
-    log("funCallback: index=%d, size=%d", index, (int) fs.size());
-    removeFish(fs[index]);
-    
-    if (index == fs.size() - 1) {
-        log("funCallback: fall");
-        fall(fs);
-    }
+
 }
 
 void FishPool::fall(std::vector<int> fs)
 {
-    // 计算下落
-    
-    // 先构建一个队列
-    queue<int> spaces;
-    set<int> pool;
-    for (int i = 0; i < fs.size(); i++)
-    {
-        spaces.push(fs.at(i));
-        pool.insert(fs.at(i));
-    }
-    
-    vector<int> toFall;
-    
-    while (!spaces.empty()) {
-        int index = spaces.front();
-        spaces.pop();
-        
-        // 检查上方是否也是待删除单元
-        Vec2 curPos = FindPosition(index);
-        int aboveIndex = FindIndex(curPos.x, curPos.y + 1);
-        
-        if (aboveIndex < 0) {
-            pool.erase(index);
-            continue;
-        }
-        
-        if(std::find(pool.begin(), pool.end(), aboveIndex) != pool.end()) {
-            spaces.push(index);
-        } else {
-            vector<int> aboves = getAbove(index);
-            
-            if (aboves.size() <= 1)
-            {
-                pool.erase(index);
-                continue;
-            }
-            
-            for (int j = 0; j < aboves.size() - 1; j++) {
-                int aboveIndex = aboves.at(j);
-                fishes[aboveIndex] = fishes[aboves.at(j + 1)];
-                fishes[aboves.at(j + 1)] = NULL;
-                
-                if (fishes[aboveIndex] != NULL) {
-                    Vec2 logicPos = FindPosition(aboveIndex);
-                    Vec2 pos(logicPos.x * fishSize + fishSize / 2, logicPos.y * fishSize + fishSize / 2 + visibleSize.height * 0.18);
-                    fishes[aboveIndex]->SetTarget(pos.x, pos.y);
-                    toFall.push_back(aboveIndex);
-                }
-                
-            }
-            pool.erase(index);
-            
-        }
-        
-    }
-    
-    for (int i = 0; i < toFall.size(); i++) {
-        Fish* ff = fishes[toFall.at(i)];
-        if (ff != NULL) {
-            ff->MoveToTarget();
-        }
-    }
-}
+   }
 
 vector<int> FishPool::getAbove(int index)
 {
@@ -180,13 +79,7 @@ vector<int> FishPool::getAbove(int index)
 
 void FishPool::removeFish(int index)
 {
-    if (fishes[index] == NULL) {
-        return;
-    }
-    
-    fishes[index]->QuitFromScene();
-    delete fishes[index];
-    fishes[index] = NULL;
+
 }
 
 vector<int> FishPool::GetNeibours(int index)
