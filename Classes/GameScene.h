@@ -19,13 +19,31 @@ public:
     
 private:
     FishPool* fishPool;
+    int score;
+    
+    cocos2d::Label *scoreBoard;
     
     void GoToGameOverScene(float dt);
     void AddFish(cocos2d::Ref *sender);
     void InitialBlocks(cocos2d::Size size);
     void update(float dt);
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
-
+    void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onScoreUpdate(int score);
+    
+    Fish* touchedFish;
+    
+    Fish* neibourFish;
+    
+    cocos2d::Point touchedPos;
+    
+    cocos2d::Point touchStarPos;
+    
+    int moveCount;
+    
+    bool isHorizontal = false;
 };
 
 #endif // __GAME_SCENE_H__

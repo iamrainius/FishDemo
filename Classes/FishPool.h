@@ -19,18 +19,37 @@ public:
     static FishPool* create(cocos2d::Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
     
     FishPool(cocos2d::Size& visibleSize, int cols, int rows, cocos2d::Layer* layer);
+    
     void PutFish(Fish* fish, int col, int row);
+    
     Fish* GetFish(int col, int row);
+    
     void clearFishes(int col, int row);
+    
     void ProcessTouch(cocos2d::Point location);
+    
+    Fish* getTouchedFish(cocos2d::Point location);
+    
+    std::function<void(int)> onScoreUpdate;
+    
+    int getFishSize();
+    
+    Fish* getNeibourFish(Fish* fish, int side);
     
 private:
     int cols;
+    
     int rows;
+    
     Fish** fishes;
+    
     int fishSize;
+    
     cocos2d::Vector<cocos2d::SpriteFrame*> fishFrames[5];
+    
     cocos2d::Size visibleSize;
+    
+    int score;
     
     int FindIndex(int col, int row);
     
@@ -55,6 +74,7 @@ private:
     void funCallback(int index, std::vector<int>& fs);
     
     void fall(std::vector<int> fs);
+    
 };
 
 #endif /* __FISH_POOL_H__ */

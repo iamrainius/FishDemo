@@ -18,6 +18,7 @@ typedef Fish* PFish;
 
 FishPool::FishPool(Size& visibleSize, int cols, int rows, cocos2d::Layer* layer)
 {
+    score = 0;
     initPool(visibleSize, cols, rows, layer);
     setupFrames();
 }
@@ -46,6 +47,24 @@ void FishPool::ProcessTouch(cocos2d::Point location)
     }
 }
 
+Fish* FishPool::getTouchedFish(cocos2d::Point location)
+{
+    for (int i = 0; i < rows * cols; i++) {
+        if (fishes[i] == NULL) {
+            continue;
+        }
+        
+        Point pos = fishes[i]->GetFishPosition();
+        Rect rect = Rect(pos.x - fishSize / 2, pos.y - fishSize / 2, fishSize, fishSize);
+        
+        if (rect.containsPoint(location)) {
+            return fishes[i];
+        }
+    }
+    
+    return NULL;
+}
+
 
 void FishPool::RemoveContinuousFishes(int fishIndex)
 {
@@ -69,6 +88,23 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
         log("Continuous size: %lu", continuous.size());
         cursor++;
     }
+    
+    if (continuous.size() < MIN_DELETE_NUM) {
+        return;
+    }
+    
+    size_t size = continuous.size();
+    if (size == 2) {
+        score += 20;
+    } else if (size == 3) {
+        score += 60;
+    } else if (size == 4) {
+        score += 80;
+    } else if (size >= 5) {
+        score += 180;
+    }
+    
+    onScoreUpdate(score);
     
     // 从场景中移除点中的鱼
     for (int j = 0; j < continuous.size(); j++) {
@@ -336,4 +372,37 @@ void FishPool::setupFrames()
     }
 }
 
+int FishPool::getFishSize()
+{
+    return fishSize;
+}
 
+Fish* FishPool::getNeibourFish(Fish *fish, int side) {
+    
+    if (fish == NULL) {
+        return NULL;
+    }
+    
+    for (int i = 0; i < cols * rows; i++) {
+        if (fish == fishes[i]) {
+            Vec2 pos = FindPosition(i);
+            int index = -1;
+            if (side == 0) {
+                pos.y += 1;
+            } else if (side == 1) {
+                pos.x += 1;
+            } else if (side == 2) {
+                pos.y -= 1;
+            } else if (side == 3) {
+                pos.x -= 1;
+            }
+            
+            index = FindIndex(pos.x, pos.y);
+            if (index >= 0) {
+                return fishes[index];
+            }
+        }
+    }
+    
+    return NULL;
+}
