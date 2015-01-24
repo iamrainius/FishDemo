@@ -39,13 +39,11 @@ void Fish::MoveToTarget()
     auto func = CallFunc::create(CC_CALLBACK_0(Fish::onActionFinished, this));
     auto sequence = Sequence::create(moveTo, func, NULL);
     fishSprite->runAction(sequence);
-//    fishSprite->setPosition(fishPos);
 }
 
 void Fish::onActionFinished()
 {
     Vec2 pos = fishSprite->getPosition();
-    log("Get to %s, %f, %f", fishSprite->getName().c_str(), pos.x, pos.y);
 }
 
 void Fish::SetTarget(float x, float y) {

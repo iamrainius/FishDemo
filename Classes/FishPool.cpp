@@ -74,8 +74,6 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
     for (int j = 0; j < continuous.size(); j++) {
         
         auto fish = fishes[continuous.at(j)];
-        
-//        动画，先不管
         auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
         auto animate = Animate::create(fishAnimation);
         auto func = CallFunc::create(CC_CALLBACK_0(FishPool::funCallback, this, j, continuous));
@@ -110,7 +108,7 @@ void FishPool::fall(std::vector<int> fs)
         pool.insert(fs.at(i));
     }
     
-    vector<int> toFall;
+    set<int> toFall;
     
     while (!spaces.empty()) {
         int index = spaces.front();
@@ -145,7 +143,7 @@ void FishPool::fall(std::vector<int> fs)
                     Vec2 logicPos = FindPosition(aboveIndex);
                     Vec2 pos(logicPos.x * fishSize + fishSize / 2, logicPos.y * fishSize + fishSize / 2 + visibleSize.height * 0.18);
                     fishes[aboveIndex]->SetTarget(pos.x, pos.y);
-                    toFall.push_back(aboveIndex);
+                    toFall.insert(aboveIndex);
                 }
                 
             }
@@ -155,11 +153,15 @@ void FishPool::fall(std::vector<int> fs)
         
     }
     
-    for (int i = 0; i < toFall.size(); i++) {
-        Fish* ff = fishes[toFall.at(i)];
+    log("Falling size: %d", (int) toFall.size());
+    
+    for (set<int>::iterator it = toFall.begin(); it != toFall.end(); it++) {
+        
+        Fish* ff = fishes[*it];
         if (ff != NULL) {
             ff->MoveToTarget();
         }
+
     }
 }
 
@@ -314,19 +316,19 @@ void FishPool::setupFrames()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("red.plist", "red.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("purple.plist", "purple.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("blue.plist", "blue.png");
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("green.plist", "green.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pink.plist", "pink.png");
     
     char filename[20];
     string patterns[5] = {
-        "blue_%02d.png",
-        "red_%02d.png",
-        "green_%02d.png",
-        "yellow_%02d.png",
-        "purple_%02d.png"
+        "blue_000%02d.png",
+        "red_000%02d.png",
+        "pink_000%02d.png",
+        "yellow_000%02d.png",
+        "purple_000%02d.png"
     };
     
     for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 23; j++) {
+        for (int j = 0; j < 22; j++) {
             sprintf(filename, patterns[i].c_str(), j);
             log("%s", filename);
             fishFrames[i].pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(filename));
