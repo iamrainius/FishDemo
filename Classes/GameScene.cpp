@@ -39,13 +39,54 @@ bool GameScene::init()
     
     //this->scheduleOnce(schedule_selector(GameScene::GoToGameOverScene), 5);
     
-    auto background = Sprite::create("game_bg.png");
+    auto background = Sprite::create("playbg.jpg");
     const float ratio = visibleSize.width / background->getContentSize().width;
-    background->setColor(Color3B::GRAY);
+    log("ratio: %f", ratio);
+    
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
     background->setScale(ratio);
-    
     this->addChild(background);
+    
+    
+    auto animation = Animation::create();
+    for (int i = 0; i < 144; i += 2) {
+        char fileName[100] = {0};
+        sprintf(fileName, "playbg_glow_0%03d.jpg", i);
+        
+        animation->addSpriteFrameWithFile(fileName);
+    }
+    
+    auto playBgTop = Sprite::create("playbg_glow_0001.jpg");
+    animation->setDelayPerUnit(0.08f);
+    animation->setRestoreOriginalFrame(true);
+    auto action = Animate::create(animation);
+    
+    const float ratioBg = visibleSize.width / playBgTop->getContentSize().width;
+    playBgTop->setScale(ratioBg);
+    playBgTop->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 0.5 * playBgTop->getContentSize().height * ratioBg);
+    this->addChild(playBgTop);
+    
+    auto animSand = Animation::create();
+    for (int i = 0; i < 144; i += 4) {
+        char fileName[100] = {0};
+        sprintf(fileName, "playbg_sand_0%03d.jpg", i);
+        
+        animSand->addSpriteFrameWithFile(fileName);
+    }
+    
+    auto playBgBottom = Sprite::create("playbg_sand_0001.jpg");
+    animSand->setDelayPerUnit(0.08f);
+    animSand->setRestoreOriginalFrame(true);
+    auto actionSand = Animate::create(animSand);
+    
+    const float ratioSand = visibleSize.width / playBgBottom->getContentSize().width;
+    playBgBottom->setScale(ratioSand);
+    playBgBottom->setPosition(origin.x + visibleSize.width / 2, origin.y + 0.5 * playBgBottom->getContentSize().height * ratioSand);
+    this->addChild(playBgBottom);
+    
+    playBgTop->runAction(RepeatForever::create(Sequence::create(action, NULL, NULL)));
+    playBgBottom->runAction(RepeatForever::create(Sequence::create(actionSand, NULL, NULL)));
+
     
     scoreBoard = Label::createWithTTF("Score: 0", "Roboto-Thin.ttf", 60);
     scoreBoard->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 0.9);

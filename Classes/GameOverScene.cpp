@@ -37,7 +37,6 @@ bool GameOverScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     auto background = Sprite::create("game_over_bg.png");
-    background->setColor(Color3B::GRAY);
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
     this->addChild(background);
     

@@ -40,7 +40,6 @@ bool MainMenuScene::init()
     
     const float ratio = visibleSize.width / background->getContentSize().width;
     
-    background->setColor(Color3B::GRAY);
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
     background->setScale(ratio);
     this->addChild(background);
