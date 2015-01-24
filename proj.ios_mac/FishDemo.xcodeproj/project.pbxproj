@@ -16,6 +16,7 @@
 		3F04AD3F1A39F10A00F00576 /* try_again.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F04AD3D1A39F10A00F00576 /* try_again.png */; };
 		3F04AD421A39F13700F00576 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F04AD401A39F13700F00576 /* GameOverScene.cpp */; };
 		3F04AD441A39F29900F00576 /* game_over_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F04AD431A39F29900F00576 /* game_over_bg.png */; };
+		3F39EE2C1A6D34DC0022A029 /* FishManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F39EE2A1A6D34DC0022A029 /* FishManager.cpp */; };
 		3F6E23E91A388D6000EFAABA /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E23E71A388D6000EFAABA /* SplashScene.cpp */; };
 		3F6E23ED1A3892D500EFAABA /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E23EC1A3892D500EFAABA /* MainMenuScene.cpp */; };
 		3F6E23F81A389A1900EFAABA /* MainScene.csb in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E23F41A389A1900EFAABA /* MainScene.csb */; };
@@ -101,6 +102,8 @@
 		3F04AD401A39F13700F00576 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
 		3F04AD411A39F13700F00576 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		3F04AD431A39F29900F00576 /* game_over_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_over_bg.png; sourceTree = "<group>"; };
+		3F39EE2A1A6D34DC0022A029 /* FishManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FishManager.cpp; sourceTree = "<group>"; };
+		3F39EE2B1A6D34DC0022A029 /* FishManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishManager.h; sourceTree = "<group>"; };
 		3F6E23E71A388D6000EFAABA /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		3F6E23E81A388D6000EFAABA /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		3F6E23EA1A38916700EFAABA /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				3FCB72851A3C2ABE00D8FC15 /* Fish.cpp */,
 				3FCB72871A3C4AF300D8FC15 /* FishPool.cpp */,
 				3FCB72881A3C4AF300D8FC15 /* FishPool.h */,
+				3F39EE2A1A6D34DC0022A029 /* FishManager.cpp */,
+				3F39EE2B1A6D34DC0022A029 /* FishManager.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -548,6 +553,7 @@
 			files = (
 				3FCB72861A3C2ABE00D8FC15 /* Fish.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				3F39EE2C1A6D34DC0022A029 /* FishManager.cpp in Sources */,
 				3F6E23ED1A3892D500EFAABA /* MainMenuScene.cpp in Sources */,
 				3F6E23E91A388D6000EFAABA /* SplashScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,

@@ -3,7 +3,6 @@
 #include "ui/CocosGUI.h"
 #include "GameOverScene.h"
 #include "Definitions.h"
-#include "FishPool.h"
 
 USING_NS_CC;
 
@@ -47,7 +46,7 @@ bool GameScene::init()
     
     this->addChild(background);
     
-    fishPool = FishPool::create(visibleSize, HORIZONTAL_BLOCKS, VERTICAL_BLOCKS, this);
+    fm = FishManager::create(visibleSize, HORIZONTAL_BLOCKS, VERTICAL_BLOCKS, this);
     
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
@@ -72,7 +71,7 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     if (rect.containsPoint(locationInNode))
     {
         log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
-        fishPool->ProcessTouch(locationInNode);
+        fm->ProcessTouch(locationInNode);
         return true;
     }
 

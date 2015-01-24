@@ -2,7 +2,8 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
-#include "FishPool.h"
+#include "FishManager.h"
+
 
 class GameScene : public cocos2d::Layer
 {
@@ -18,8 +19,9 @@ public:
     CREATE_FUNC(GameScene);
     
 private:
-    FishPool* fishPool;
+    FishManager* fm;
     
+private:
     void GoToGameOverScene(float dt);
     void AddFish(cocos2d::Ref *sender);
     void InitialBlocks(cocos2d::Size size);
