@@ -67,6 +67,32 @@ int FishPool::findFishIndexByPoint(Point point)
     return -1;
 }
 
+vector<int> FishPool::findContinuousFishes(int index, int type)
+{
+    vector<int> continuous;
+    
+    int cursor = 0;
+    continuous.push_back(index);
+    
+    while (cursor < continuous.size()) {
+        
+        vector<int> neibours = getNeibours(continuous.at(cursor), type);
+        log("neibours size: %lu", neibours.size());
+        
+        for (int i = 0; i < neibours.size(); i++) {
+            int index = neibours.at(i);
+            if (!contains(continuous, index)) {
+                continuous.push_back(index);
+            }
+        }
+        
+        log("Continuous size: %lu", continuous.size());
+        cursor++;
+    }
+    
+    return continuous;
+}
+
 
 void FishPool::RemoveContinuousFishes(int fishIndex)
 {
@@ -78,7 +104,7 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
     
     while (cursor < continuous.size()) {
         
-        vector<int> neibours = GetNeibours(continuous.at(cursor));
+        vector<int> neibours = getNeibours(continuous.at(cursor));
         log("neibours size: %lu", neibours.size());
         
         for (int i = 0; i < neibours.size(); i++) {
@@ -232,31 +258,80 @@ void FishPool::removeFish(int index)
     fishes[index] = NULL;
 }
 
-vector<int> FishPool::GetNeibours(int index)
+vector<int> FishPool::getNeibours(int index)
 {
+//    vector<int> neibours;
+//    Vec2 pos = FindPosition(index);
+//    
+//    int neibour;
+//    neibour = FindIndex(pos.x + 1, pos.y);
+//    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
+//        neibours.push_back(neibour);
+//    }
+//    
+//    neibour = FindIndex(pos.x - 1, pos.y);
+//    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
+//        neibours.push_back(neibour);
+//    }
+//    
+//    neibour = FindIndex(pos.x, pos.y + 1);
+//    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
+//        neibours.push_back(neibour);
+//    }
+//    
+//    neibour = FindIndex(pos.x, pos.y - 1);
+//    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
+//        neibours.push_back(neibour);
+//    }
+    
+//    return neibours;
+    int type = -1;
+    
+    if (index >= 0 && index < cols * rows)
+    {
+        auto fish = fishes[index];
+        if (fish != NULL)
+        {
+            type = fish->type;
+        }
+    }
+
+    return getNeibours(index, type);
+}
+
+vector<int> FishPool::getNeibours(int index, int type) {
     vector<int> neibours;
-    Vec2 pos = FindPosition(index);
     
-    int neibour;
-    neibour = FindIndex(pos.x + 1, pos.y);
-    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
-        neibours.push_back(neibour);
+    if (index >= 0 && index < cols * rows)
+    {
+        auto fish = fishes[index];
+        if (fish != NULL)
+        {
+            Vec2 pos = FindPosition(index);
+            
+            int neibour;
+            neibour = FindIndex(pos.x + 1, pos.y);
+            if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == type)) {
+                neibours.push_back(neibour);
+            }
+            
+            neibour = FindIndex(pos.x - 1, pos.y);
+            if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == type)) {
+                neibours.push_back(neibour);
+            }
+            
+            neibour = FindIndex(pos.x, pos.y + 1);
+            if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == type)) {
+                neibours.push_back(neibour);
+            }
+            
+            neibour = FindIndex(pos.x, pos.y - 1);
+            if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == type)) {
+                neibours.push_back(neibour);
+            }
+        }
     }
     
-    neibour = FindIndex(pos.x - 1, pos.y);
-    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
-        neibours.push_back(neibour);
-    }
-    
-    neibour = FindIndex(pos.x, pos.y + 1);
-    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
-        neibours.push_back(neibour);
-    }
-    
-    neibour = FindIndex(pos.x, pos.y - 1);
-    if (neibour >= 0 && fishes[neibour] != NULL && (fishes[neibour]->GetType() == fishes[index]->GetType())) {
-        neibours.push_back(neibour);
-    }
     
     return neibours;
 }
@@ -413,4 +488,44 @@ Fish* FishPool::getNeibourFish(Fish *fish, int side) {
     }
     
     return NULL;
+}
+
+bool FishPool::swapFishes(Fish *fish1, Fish *fish2)
+{
+    if (fish1 != NULL && fish2 != NULL && fish1->type == fish2->type) {
+        return true;
+    }
+    
+    int index1 = findFish(fish1);
+    int index2 = findFish(fish2);
+    
+    if (index1 < 0 || index1 >= cols * rows || index2 < 0 || index2 >= cols * rows)
+    {
+        return false;
+    }
+    
+    fishes[index1] = fish2;
+    fishes[index2] = fish1;
+    
+    Vec2 tmpPos = fish1->fishPos;
+    fish1->fishPos = fish2->fishPos;
+    fish2->fishPos = tmpPos;
+    
+    return true;
+}
+
+int FishPool::findFish(Fish* fish)
+{
+    if (fish == NULL)
+    {
+        return -1;
+    }
+    
+    for (int i = 0; i < cols * rows; i++) {
+        if (fish == fishes[i]) {
+            return i;
+        }
+    }
+    
+    return -1;
 }

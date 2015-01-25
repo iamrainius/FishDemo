@@ -230,15 +230,28 @@ void GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 
 void GameScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-    if (touchedFish != NULL) {
-//        touchedFish->fishSprite->setPosition(touchedFish->fishPos);
+//    if (touchedFish != NULL) {
+//        touchedFish->MoveToTarget();
+//    }
+//    
+//    if (neibourFish != NULL) {
+//        neibourFish->MoveToTarget();
+//    }
+    
+    if (touchedFish != NULL && neibourFish != NULL) {
+        if (fishPool->swapFishes(touchedFish, neibourFish))
+        {
+            touchedFish->MoveToTarget();
+            if (neibourFish != NULL)
+            {
+                neibourFish->MoveToTarget();
+            }
+        }
+    } else {
         touchedFish->MoveToTarget();
     }
     
-    if (neibourFish != NULL) {
-        neibourFish->MoveToTarget();
-//        neibourFish->fishSprite->setPosition(neibourFish->fishPos);
-    }
+    
 }
 
 void GameScene::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event)

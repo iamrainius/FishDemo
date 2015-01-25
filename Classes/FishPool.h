@@ -36,6 +36,8 @@ public:
     
     Fish* getNeibourFish(Fish* fish, int side);
     
+    bool swapFishes(Fish* fish1, Fish* fish2);
+    
 private:
     int cols;
     
@@ -57,7 +59,9 @@ private:
     
     void RemoveContinuousFishes(int fishIndex);
     
-    vector<int> GetNeibours(int index);
+    vector<int> getNeibours(int index);
+    
+    vector<int> getNeibours(int index, int type);
     
     bool contains(vector<int>& v, int val);
     
@@ -77,6 +81,9 @@ private:
     
     int findFishIndexByPoint(cocos2d::Point point);
     
+    std::vector<int> findContinuousFishes(int index, int type);
+    
+    int findFish(Fish* fish);
 };
 
 #endif /* __FISH_POOL_H__ */
