@@ -245,11 +245,16 @@ void GameScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         if (fishPool->swapFishes(touchedFish, neibourFish))
         {
             pthread_mutex_init(&mutex,NULL);
-            
-            touchedFish->moveToTarget(CallFunc::create(CC_CALLBACK_0(GameScene::onSwappingFinished1, this)));
-            if (neibourFish != NULL)
-            {
-                neibourFish->moveToTarget(CallFunc::create(CC_CALLBACK_0(GameScene::onSwappingFinished2, this)));
+         
+            if (touchedFish->type == neibourFish->type) {
+                touchedFish->MoveToTarget();
+                neibourFish->MoveToTarget();
+            } else {
+                touchedFish->moveToTarget(CallFunc::create(CC_CALLBACK_0(GameScene::onSwappingFinished1, this)));
+                if (neibourFish != NULL)
+                {
+                    neibourFish->moveToTarget(CallFunc::create(CC_CALLBACK_0(GameScene::onSwappingFinished2, this)));
+                }
             }
         }
     } else {
