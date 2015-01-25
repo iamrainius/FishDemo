@@ -34,11 +34,12 @@ Fish::Fish(cocos2d::Vec2& pos, float size, Layer *layer)
 
 void Fish::MoveToTarget()
 {
-    log("Move to %s, %f, %f", fishSprite->getName().c_str(), fishPos.x, fishPos.y);
+//    log("Move to %s, %f, %f", fishSprite->getName().c_str(), fishPos.x, fishPos.y);
     auto moveTo = MoveTo::create(0.2f, fishPos);
     auto func = CallFunc::create(CC_CALLBACK_0(Fish::onActionFinished, this));
     auto sequence = Sequence::create(moveTo, func, NULL);
     fishSprite->runAction(sequence);
+//    fishSprite->setPosition(fishPos);
 }
 
 void Fish::moveToTarget(CallFunc* func)

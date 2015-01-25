@@ -154,6 +154,10 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 
 void GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    if (touchedFish == NULL) {
+        return;
+    }
+    
     moveCount++;
     if (moveCount <= 5) {
         return;
@@ -233,15 +237,11 @@ void GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 
 void GameScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-//    if (touchedFish != NULL) {
-//        touchedFish->MoveToTarget();
-//    }
-//    
-//    if (neibourFish != NULL) {
-//        neibourFish->MoveToTarget();
-//    }
+    if (touchedFish == NULL) {
+        return;
+    }
     
-    if (touchedFish != NULL && neibourFish != NULL) {
+    if (neibourFish != NULL) {
         if (fishPool->swapFishes(touchedFish, neibourFish))
         {
             pthread_mutex_init(&mutex,NULL);
@@ -286,22 +286,35 @@ void GameScene::updateSwapping(int which)
         seeds.push_back(fishPool->findFish(touchedFish));
         seeds.push_back(fishPool->findFish(neibourFish));
         
-        fishPool->checkRemoveFishes(seeds);
+//        fishPool->checkRemoveFishes(seeds);
+        if (!fishPool->checkRemoveFishes(seeds)) {
+            resetSwapping();
+        }
     }
     
     pthread_mutex_unlock(&mutex);
 }
 
-void GameScene::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event)
+void GameScene::resetSwapping()
 {
+    fishPool->swapFishes(touchedFish, neibourFish);
     if (touchedFish != NULL) {
-//        touchedFish->fishSprite->setPosition(touchedFish->fishPos);
         touchedFish->MoveToTarget();
     }
     
     if (neibourFish != NULL) {
         neibourFish->MoveToTarget();
-//        neibourFish->fishSprite->setPosition(neibourFish->fishPos);
+    }
+}
+
+void GameScene::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    if (touchedFish != NULL) {
+        touchedFish->MoveToTarget();
+    }
+    
+    if (neibourFish != NULL) {
+        neibourFish->MoveToTarget();
     }
 }
 

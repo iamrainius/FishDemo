@@ -26,7 +26,7 @@ public:
     
     void clearFishes(int col, int row);
     
-    void ProcessTouch(cocos2d::Point location);
+//    void ProcessTouch(cocos2d::Point location);
     
     Fish* getTouchedFish(cocos2d::Point location);
     
@@ -40,7 +40,7 @@ public:
     
     int findFish(Fish* fish);
     
-    void checkRemoveFishes(std::vector<int> seeds);
+    bool checkRemoveFishes(std::vector<int> seeds);
     
 private:
     int cols;
@@ -57,11 +57,15 @@ private:
     
     int score;
     
+    int removeCount;
+    
+    vector<int> toFall;
+    
     int FindIndex(int col, int row);
     
     cocos2d::Vec2 FindPosition(int index);
     
-    void RemoveContinuousFishes(int fishIndex);
+//    void RemoveContinuousFishes(int fishIndex);
     
     vector<int> getNeibours(int index);
     
@@ -79,9 +83,11 @@ private:
 
     std::vector<int> getAbove(int index);
     
-    void funCallback(int index, std::vector<int>& fs);
+    void funCallback(int index, std::vector<int>& fs, int total);
     
     void fall(std::vector<int> fs);
+    
+    void fall2(std::vector<int> fs);
     
     int findFishIndexByPoint(cocos2d::Point point);
     

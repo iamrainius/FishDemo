@@ -37,6 +37,8 @@ private:
     
     void updateSwapping(int which);
     
+    void resetSwapping();
+    
     Fish* touchedFish;
     
     Fish* neibourFish;

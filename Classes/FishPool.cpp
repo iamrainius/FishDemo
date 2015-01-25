@@ -30,15 +30,6 @@ FishPool* FishPool::create(Size& visibleSize, int cols, int rows, cocos2d::Layer
     return fp;
 }
 
-
-void FishPool::ProcessTouch(cocos2d::Point location)
-{
-    int fishIndex = findFishIndexByPoint(location);
-    if (fishIndex >= 0) {
-        RemoveContinuousFishes(fishIndex);
-    }
-}
-
 Fish* FishPool::getTouchedFish(cocos2d::Point location)
 {
     int fishIndex = findFishIndexByPoint(location);
@@ -95,9 +86,11 @@ vector<int> FishPool::findContinuousFishes(int index, int type)
 }
 
 
-void FishPool::checkRemoveFishes(std::vector<int> seeds)
+bool FishPool::checkRemoveFishes(std::vector<int> seeds)
 {
     map<int, vector<int>> toRemove;
+    
+    int totalRemove = 0;
     
     for (int i = 0; i < seeds.size(); i++) {
         
@@ -157,91 +150,85 @@ void FishPool::checkRemoveFishes(std::vector<int> seeds)
         
         // 5. 将当前index对应的连续区域存入map
         toRemove.insert(pair<int, vector<int>>(index, continuous));
+        totalRemove += continuous.size();
     }
     
     map<int, vector<int>>::iterator it;
+    removeCount = 0;
+    toFall.empty();
+    
     for (it = toRemove.begin(); it != toRemove.end(); it++) {
+
         for (int j = 0; j < it->second.size(); j++) {
-            
+            toFall.push_back(it->second.at(j));
             auto fish = fishes[it->second.at(j)];
             auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
             auto animate = Animate::create(fishAnimation);
-            auto func = CallFunc::create(CC_CALLBACK_0(FishPool::funCallback, this, j, it->second));
+            auto func = CallFunc::create(CC_CALLBACK_0(FishPool::funCallback, this, j, it->second, totalRemove));
             auto sequence = Sequence::create(animate, func, NULL);
             fish->fishSprite->setLocalZOrder(200);
             fish->fishSprite->runAction(sequence);
         }
     }
+    
+    return toRemove.size() > 0;
 }
 
 
-
-void FishPool::RemoveContinuousFishes(int fishIndex)
+void FishPool::funCallback(int index, std::vector<int>& fs, int total)
 {
-    // 1. 找到所有连续的同类河豚
-    vector<int> continuous;
-    
-    int cursor = 0;
-    continuous.push_back(fishIndex);
-    
-    while (cursor < continuous.size()) {
-        
-        vector<int> neibours = getNeibours(continuous.at(cursor));
-        log("neibours size: %lu", neibours.size());
-        
-        for (int i = 0; i < neibours.size(); i++) {
-            int index = neibours.at(i);
-            if (!contains(continuous, index)) {
-                continuous.push_back(index);
-            }
-        }
-        
-        log("Continuous size: %lu", continuous.size());
-        cursor++;
-    }
-    
-    // 2. 数量未达到指定下限，则放弃消除
-    if (continuous.size() < MIN_DELETE_NUM) {
-        return;
-    }
-    
-    // 3. 根据将要消除的河豚数量计算得分
-    size_t size = continuous.size();
-    if (size == 2) {
-        score += 20;
-    } else if (size == 3) {
-        score += 60;
-    } else if (size == 4) {
-        score += 80;
-    } else if (size >= 5) {
-        score += 180;
-    }
-    
-    onScoreUpdate(score);
-    
-    // 4. 从场景中移除河豚
-    for (int j = 0; j < continuous.size(); j++) {
-        
-        auto fish = fishes[continuous.at(j)];
-        auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
-        auto animate = Animate::create(fishAnimation);
-        auto func = CallFunc::create(CC_CALLBACK_0(FishPool::funCallback, this, j, continuous));
-        auto sequence = Sequence::create(animate, func, NULL);
-        fish->fishSprite->setLocalZOrder(200);
-        fish->fishSprite->runAction(sequence);
-    }
-    
-}
-
-void FishPool::funCallback(int index, std::vector<int>& fs)
-{
-    log("funCallback: index=%d, size=%d", index, (int) fs.size());
+    log("funCallback: index=%d, size=%d, count=%d, total=%d", index, (int) fs.size(), removeCount, total);
     removeFish(fs[index]);
     
-    if (index == fs.size() - 1) {
-        log("funCallback: fall");
-        fall(fs);
+    removeCount++;
+    
+    if (removeCount >= total) {
+        log("funCallback: fall %d", (int) toFall.size());
+        fall2(toFall);
     }
+}
+
+void FishPool::fall2(std::vector<int> fs)
+{
+    // 1. 找到存在下落的列
+    set<int> columns;
+    for (int i = 0; i < fs.size(); i++) {
+        Vec2 pos = FindPosition(fs.at(i));
+        if (pos.x >= 0 && pos.y < cols) {
+            log("column needs falling: %f", pos.x);
+            columns.insert(pos.x);
+        }
+    }
+    
+    for (set<int>::iterator it = columns.begin(); it != columns.end(); it++) {
+        for (int j = 0; j < rows; j++) {
+            int index = FindIndex(*it, j);
+            if (fishes[index] == NULL) {
+                continue;
+            }
+            
+            int numEmpty = 0;
+            for (int k = 0; k < j; k++) {
+                int idx = FindIndex(*it, k);
+                if (fishes[idx] == NULL) {
+                    numEmpty++;
+                }
+            }
+            
+            if (numEmpty <= 0) {
+                continue;
+            }
+            
+            int swapIndex = FindIndex(*it, j - numEmpty);
+            Fish* fish = fishes[index];
+            fishes[index] = fishes[swapIndex];
+            fishes[swapIndex] = fish;
+            
+            fish->fishPos.y -= numEmpty * fishSize * VERTICAL_FACTOR;
+            fish->MoveToTarget();
+        }
+    }
+    
 }
 
 void FishPool::fall(std::vector<int> fs)
