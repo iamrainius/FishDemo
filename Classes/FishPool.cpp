@@ -32,42 +32,45 @@ FishPool* FishPool::create(Size& visibleSize, int cols, int rows, cocos2d::Layer
 
 void FishPool::ProcessTouch(cocos2d::Point location)
 {
-    for (int i = 0; i < rows * cols; i++) {
-        if (fishes[i] == NULL) {
-            continue;
-        }
-        
-        Point pos = fishes[i]->GetFishPosition();
-        Rect rect = Rect(pos.x - fishSize / 2, pos.y - fishSize / 2, fishSize, fishSize);
-        
-        if (rect.containsPoint(location)) {
-            RemoveContinuousFishes(i);
-            break;
-        }
+    int fishIndex = findFishIndexByPoint(location);
+    if (fishIndex >= 0) {
+        RemoveContinuousFishes(fishIndex);
     }
 }
 
 Fish* FishPool::getTouchedFish(cocos2d::Point location)
 {
+    int fishIndex = findFishIndexByPoint(location);
+    if (fishIndex >= 0) {
+        return fishes[fishIndex];
+    }
+    
+    return NULL;
+}
+
+int FishPool::findFishIndexByPoint(Point point)
+{
     for (int i = 0; i < rows * cols; i++) {
         if (fishes[i] == NULL) {
             continue;
         }
         
         Point pos = fishes[i]->GetFishPosition();
-        Rect rect = Rect(pos.x - fishSize / 2, pos.y - fishSize / 2, fishSize, fishSize);
+        const float verticalSize = fishSize * VERTICAL_FACTOR;
+        Rect rect = Rect(pos.x - fishSize / 2, pos.y - verticalSize / 2, fishSize, verticalSize);
         
-        if (rect.containsPoint(location)) {
-            return fishes[i];
+        if (rect.containsPoint(point)) {
+            return i;
         }
     }
     
-    return NULL;
+    return -1;
 }
 
 
 void FishPool::RemoveContinuousFishes(int fishIndex)
 {
+    // 1. 找到所有连续的同类河豚
     vector<int> continuous;
     
     int cursor = 0;
@@ -89,10 +92,12 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
         cursor++;
     }
     
+    // 2. 数量未达到指定下限，则放弃消除
     if (continuous.size() < MIN_DELETE_NUM) {
         return;
     }
     
+    // 3. 根据将要消除的河豚数量计算得分
     size_t size = continuous.size();
     if (size == 2) {
         score += 20;
@@ -106,7 +111,7 @@ void FishPool::RemoveContinuousFishes(int fishIndex)
     
     onScoreUpdate(score);
     
-    // 从场景中移除点中的鱼
+    // 4. 从场景中移除河豚
     for (int j = 0; j < continuous.size(); j++) {
         
         auto fish = fishes[continuous.at(j)];
@@ -337,7 +342,10 @@ void FishPool::initPool(Size& visibleSize, int cols, int rows, cocos2d::Layer* l
             int row = logicPos.y;
             
             float size = visibleSize.width / HORIZONTAL_BLOCKS;
-            Vec2 pos(col * size + size / 2, row * size + size / 2 + visibleSize.height * 0.18);
+            
+            // 鱼的位置，以左下角为基准
+            const float verticalSize = size * VERTICAL_FACTOR;
+            Vec2 pos(col * size + size / 2, row * verticalSize + verticalSize / 2 + visibleSize.height * 0.18);
             fishSize = size;
             fishes[i] = new Fish(pos, size, layer);
         }

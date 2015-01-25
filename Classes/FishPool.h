@@ -75,6 +75,8 @@ private:
     
     void fall(std::vector<int> fs);
     
+    int findFishIndexByPoint(cocos2d::Point point);
+    
 };
 
 #endif /* __FISH_POOL_H__ */

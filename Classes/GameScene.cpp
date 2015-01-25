@@ -208,8 +208,11 @@ void GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
             
         } else {
             float destY = pos.y + deltaY;
-            if (abs(destY - touchedFish->fishPos.y) > fishSize) {
-                destY = touchedFish->fishPos.y + (deltaY / abs(deltaY) * fishSize);
+            
+            //LIMENG
+            const float verticalSize = fishSize * VERTICAL_FACTOR;
+            if (abs(destY - touchedFish->fishPos.y) > verticalSize) {
+                destY = touchedFish->fishPos.y + (deltaY / abs(deltaY) * verticalSize);
             }
             
             if (neibourFish != NULL) {
@@ -228,22 +231,26 @@ void GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 void GameScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     if (touchedFish != NULL) {
-        touchedFish->fishSprite->setPosition(touchedFish->fishPos);
+//        touchedFish->fishSprite->setPosition(touchedFish->fishPos);
+        touchedFish->MoveToTarget();
     }
     
     if (neibourFish != NULL) {
-        neibourFish->fishSprite->setPosition(neibourFish->fishPos);
+        neibourFish->MoveToTarget();
+//        neibourFish->fishSprite->setPosition(neibourFish->fishPos);
     }
 }
 
 void GameScene::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     if (touchedFish != NULL) {
-        touchedFish->fishSprite->setPosition(touchedFish->fishPos);
+//        touchedFish->fishSprite->setPosition(touchedFish->fishPos);
+        touchedFish->MoveToTarget();
     }
     
     if (neibourFish != NULL) {
-        neibourFish->fishSprite->setPosition(neibourFish->fishPos);
+        neibourFish->MoveToTarget();
+//        neibourFish->fishSprite->setPosition(neibourFish->fishPos);
     }
 }
 

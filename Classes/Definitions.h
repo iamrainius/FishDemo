@@ -13,7 +13,7 @@
 #define DISPLAY_TIME_SPLASH_SCENE 2
 
 #define HORIZONTAL_BLOCKS 7
-#define VERTICAL_BLOCKS 8
+#define VERTICAL_BLOCKS 10
 
 #define GAP_SIZE 5 // pixels
 
@@ -23,4 +23,6 @@
 
 #define MIN_DELETE_NUM 3
 
+#define SCALE_FACTOR 1.2
+#define VERTICAL_FACTOR 0.75
 #endif // __DEFINITIONS_H__
