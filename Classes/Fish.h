@@ -28,6 +28,8 @@ public:
     
     void MoveToTarget();
     
+    void moveToTarget(cocos2d::CallFunc* func);
+    
     int GetType();
     
     void SetTarget(float x, float y);

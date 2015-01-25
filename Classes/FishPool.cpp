@@ -10,6 +10,7 @@
 #include "Fish.h"
 #include "Definitions.h"
 #include <queue>
+#include <map>
 
 USING_NS_CC;
 using namespace std;
@@ -92,6 +93,87 @@ vector<int> FishPool::findContinuousFishes(int index, int type)
     
     return continuous;
 }
+
+
+void FishPool::checkRemoveFishes(std::vector<int> seeds)
+{
+    map<int, vector<int>> toRemove;
+    
+    for (int i = 0; i < seeds.size(); i++) {
+        
+        int index = seeds.at(i);
+        
+        // 1. 当前index是否已经统计
+        bool hasCounted = false;
+        map<int, vector<int>>::iterator it;
+        for (it = toRemove.begin(); it != toRemove.end(); it++) {
+            if (contains(it->second, index)) {
+                hasCounted = true;
+            }
+        }
+        
+        if (hasCounted) {
+            continue;
+        }
+        
+        // 2. 查找相邻的同类
+        vector<int> continuous;
+        int cursor = 0;
+        continuous.push_back(index);
+        while (cursor < continuous.size()) {
+            
+            vector<int> neibours = getNeibours(continuous.at(cursor));
+            log("neibours size: %lu", neibours.size());
+            
+            for (int i = 0; i < neibours.size(); i++) {
+                int index = neibours.at(i);
+                if (!contains(continuous, index)) {
+                    continuous.push_back(index);
+                }
+            }
+            
+            log("Continuous size: %lu", continuous.size());
+            cursor++;
+        }
+        
+        // 3. 相邻同类数量少于下限则忽略
+        if (continuous.size() < MIN_DELETE_NUM) {
+            continue;
+        }
+        
+        // 4. 计分
+        size_t size = continuous.size();
+        if (size == 2) {
+            score += 20;
+        } else if (size == 3) {
+            score += 60;
+        } else if (size == 4) {
+            score += 80;
+        } else if (size >= 5) {
+            score += 180;
+        }
+        
+        onScoreUpdate(score);
+        
+        // 5. 将当前index对应的连续区域存入map
+        toRemove.insert(pair<int, vector<int>>(index, continuous));
+    }
+    
+    map<int, vector<int>>::iterator it;
+    for (it = toRemove.begin(); it != toRemove.end(); it++) {
+        for (int j = 0; j < it->second.size(); j++) {
+            
+            auto fish = fishes[it->second.at(j)];
+            auto fishAnimation = Animation::createWithSpriteFrames(fishFrames[fish->type],0.018f);
+            auto animate = Animate::create(fishAnimation);
+            auto func = CallFunc::create(CC_CALLBACK_0(FishPool::funCallback, this, j, it->second));
+            auto sequence = Sequence::create(animate, func, NULL);
+            fish->fishSprite->setLocalZOrder(200);
+            fish->fishSprite->runAction(sequence);
+        }
+    }
+}
+
 
 
 void FishPool::RemoveContinuousFishes(int fishIndex)
@@ -208,7 +290,8 @@ void FishPool::fall(std::vector<int> fs)
                 
                 if (fishes[aboveIndex] != NULL) {
                     Vec2 logicPos = FindPosition(aboveIndex);
-                    Vec2 pos(logicPos.x * fishSize + fishSize / 2, logicPos.y * fishSize + fishSize / 2 + visibleSize.height * 0.18);
+                    const float verticalSize = fishSize * VERTICAL_FACTOR;
+                    Vec2 pos(logicPos.x * fishSize + fishSize / 2, logicPos.y * verticalSize + verticalSize / 2 + visibleSize.height * 0.18);
                     fishes[aboveIndex]->SetTarget(pos.x, pos.y);
                     toFall.insert(aboveIndex);
                 }

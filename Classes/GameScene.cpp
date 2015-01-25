@@ -114,17 +114,20 @@ void GameScene::onScoreUpdate(int score)
     char scoreText[100];
     sprintf(scoreText, "Score: %d", score);
     scoreBoard->setString(scoreText);
-    
-    if (score >= 300) {
-        // 过关
-        auto scene = GameOverScene::createScene();
-        Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
-    }
+//    
+//    if (score >= 300) {
+//        // 过关
+//        auto scene = GameOverScene::createScene();
+//        Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
+//    }
 }
 
 
 bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    touchedFishDone = false;
+    neibourFishDone =false;
+    
     moveCount = 0;
     neibourFish = NULL;
     auto target = event->getCurrentTarget();
@@ -241,17 +244,52 @@ void GameScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     if (touchedFish != NULL && neibourFish != NULL) {
         if (fishPool->swapFishes(touchedFish, neibourFish))
         {
-            touchedFish->MoveToTarget();
+            pthread_mutex_init(&mutex,NULL);
+            
+            touchedFish->moveToTarget(CallFunc::create(CC_CALLBACK_0(GameScene::onSwappingFinished1, this)));
             if (neibourFish != NULL)
             {
-                neibourFish->MoveToTarget();
+                neibourFish->moveToTarget(CallFunc::create(CC_CALLBACK_0(GameScene::onSwappingFinished2, this)));
             }
         }
     } else {
         touchedFish->MoveToTarget();
     }
     
+}
+
+void GameScene::onSwappingFinished1()
+{
+    updateSwapping(0);
+}
+
+void GameScene::onSwappingFinished2()
+{
+    updateSwapping(1);
+}
+
+void GameScene::updateSwapping(int which)
+{
+    pthread_mutex_lock(&mutex);
     
+    if (which == 0) {
+        log("touchedFish done.");
+        touchedFishDone = true;
+    } else {
+        log("neibourFish done.");
+        neibourFishDone = true;
+    }
+    
+    if (touchedFishDone && neibourFishDone) {
+        log("All done.");
+        vector<int> seeds;
+        seeds.push_back(fishPool->findFish(touchedFish));
+        seeds.push_back(fishPool->findFish(neibourFish));
+        
+        fishPool->checkRemoveFishes(seeds);
+    }
+    
+    pthread_mutex_unlock(&mutex);
 }
 
 void GameScene::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event)

@@ -38,6 +38,10 @@ public:
     
     bool swapFishes(Fish* fish1, Fish* fish2);
     
+    int findFish(Fish* fish);
+    
+    void checkRemoveFishes(std::vector<int> seeds);
+    
 private:
     int cols;
     
@@ -83,7 +87,6 @@ private:
     
     std::vector<int> findContinuousFishes(int index, int type);
     
-    int findFish(Fish* fish);
 };
 
 #endif /* __FISH_POOL_H__ */

@@ -32,10 +32,17 @@ private:
     void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event);
     void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event);
     void onScoreUpdate(int score);
+    void onSwappingFinished1();
+    void onSwappingFinished2();
+    
+    void updateSwapping(int which);
     
     Fish* touchedFish;
     
     Fish* neibourFish;
+    
+    bool touchedFishDone;
+    bool neibourFishDone;
     
     cocos2d::Point touchedPos;
     
@@ -44,6 +51,8 @@ private:
     int moveCount;
     
     bool isHorizontal = false;
+    
+    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 };
 
 #endif // __GAME_SCENE_H__
