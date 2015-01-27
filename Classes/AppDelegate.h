@@ -2,6 +2,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+using namespace std;
 
 /**
 @brief    The cocos2d Application.
@@ -13,6 +14,13 @@ class  AppDelegate : private cocos2d::Application
 public:
     AppDelegate();
     virtual ~AppDelegate();
+    
+    void setScore(int sc);
+    int getScore();
+    
+    void setScreenshotpath(string str);
+    string getScreenshotPath();
+    
 
     virtual void initGLContextAttrs();
 
@@ -34,6 +42,9 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+private:
+    int score;//分数
+    string screenshotPath;
 };
 
 #endif // _APP_DELEGATE_H_

@@ -65,3 +65,25 @@ void AppDelegate::applicationWillEnterForeground() {
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
+
+void AppDelegate::setScore(int sc)
+{
+    score = sc;
+}
+
+int AppDelegate::getScore()
+{
+    return score;
+}
+
+void AppDelegate::setScreenshotpath(string str)
+{
+    screenshotPath = str;
+}
+
+string AppDelegate::getScreenshotPath()
+{
+    return screenshotPath;
+}
+
+

@@ -42,6 +42,8 @@ public:
     
     bool checkRemoveFishes(std::vector<int> seeds);
     
+    void CheckBlink(Fish* fish);
+    
 private:
     int cols;
     
@@ -52,6 +54,10 @@ private:
     int fishSize;
     
     cocos2d::Vector<cocos2d::SpriteFrame*> fishFrames[5];
+    
+    cocos2d::Vector<cocos2d::SpriteFrame*> bubbleFrames;
+    
+    cocos2d::Vector<cocos2d::SpriteFrame*> blinkFrames;
     
     cocos2d::Size visibleSize;
     

@@ -40,6 +40,9 @@ bool SplashScene::init()
     
     auto background = Sprite::create("splash_bg.png");
     background->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
+    //LIMENG
+    const float ratio = visibleSize.width / background->getContentSize().width;
+    background->setScale(ratio);
     this->addChild(background);
 
     return true;

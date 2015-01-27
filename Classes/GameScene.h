@@ -17,6 +17,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
     
+    //static string screenshotPath;
+    
 private:
     FishPool* fishPool;
     int score;
@@ -34,6 +36,7 @@ private:
     void onScoreUpdate(int score);
     void onSwappingFinished1();
     void onSwappingFinished2();
+    void onScreenshotFinished(bool b, const string& s);
     
     void updateSwapping(int which);
     

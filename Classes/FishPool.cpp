@@ -168,16 +168,29 @@ bool FishPool::checkRemoveFishes(std::vector<int> seeds)
             auto sequence = Sequence::create(animate, func, NULL);
             fish->fishSprite->setLocalZOrder(200);
             fish->fishSprite->runAction(sequence);
+            
+//            auto bubbleAnimation = Animation::createWithSpriteFrames(bubbleFrames,0.02f);
+//            auto bbAnimate = Animate::create(bubbleAnimation);
+//            auto bbSeq = Sequence::create(bbAnimate, NULL, NULL);
+//            fish->fishSprite->runAction(bbSeq);
         }
     }
     
     return toRemove.size() > 0;
 }
 
+void FishPool::CheckBlink( Fish* fish )
+{
+    auto blinkAnimation = Animation::createWithSpriteFrames(blinkFrames,0.06f);
+    auto animate = Animate::create(blinkAnimation);
+    auto sequence = Sequence::create(animate, NULL, NULL);
+    fish->fishSprite->runAction(sequence);
+}
 
 void FishPool::funCallback(int index, std::vector<int>& fs, int total)
 {
     log("funCallback: index=%d, size=%d, count=%d, total=%d", index, (int) fs.size(), removeCount, total);
+    
     removeFish(fs[index]);
     
     removeCount++;
@@ -435,6 +448,24 @@ void FishPool::setupFrames()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("purple.plist", "purple.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("blue.plist", "blue.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pink.plist", "pink.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("bubbles.plist", "bubbles.png");
+    
+    char bbFilename[20];
+    
+    for (int j = 1; j <= 30; j++) {
+        sprintf(bbFilename, "bubbleA_0%02d.png", j);
+        log("%s", bbFilename);
+        bubbleFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(bbFilename));
+    }
+    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("yellow_blink.plist", "yellow_blink.png");
+    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00000.png"));
+    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00001.png"));
+    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00002.png"));
+    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00003.png"));
+    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00004.png"));
+    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00005.png"));
+
     
     char filename[20];
     string patterns[5] = {

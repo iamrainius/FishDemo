@@ -16,6 +16,15 @@
 		3F04AD3F1A39F10A00F00576 /* try_again.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F04AD3D1A39F10A00F00576 /* try_again.png */; };
 		3F04AD421A39F13700F00576 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F04AD401A39F13700F00576 /* GameOverScene.cpp */; };
 		3F04AD441A39F29900F00576 /* game_over_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F04AD431A39F29900F00576 /* game_over_bg.png */; };
+		3F1D70E61A751BD400DAB676 /* bubbles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D70E41A751BD400DAB676 /* bubbles.plist */; };
+		3F1D70E71A751BD400DAB676 /* bubbles.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D70E51A751BD400DAB676 /* bubbles.png */; };
+		3F44BC921A77E90B00A0CC29 /* 胜利.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC8F1A77E90B00A0CC29 /* 胜利.png */; };
+		3F44BC931A77E90B00A0CC29 /* yellow_blink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC901A77E90B00A0CC29 /* yellow_blink.plist */; };
+		3F44BC941A77E90B00A0CC29 /* yellow_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC911A77E90B00A0CC29 /* yellow_blink.png */; };
+		3F44BC961A77E96000A0CC29 /* 返回主菜单.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC951A77E96000A0CC29 /* 返回主菜单.png */; };
+		3F44BC981A77E98600A0CC29 /* 下一关.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC971A77E98600A0CC29 /* 下一关.png */; };
+		3F44BC9B1A77E9B800A0CC29 /* 第1关.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC991A77E9B800A0CC29 /* 第1关.png */; };
+		3F44BC9C1A77E9B800A0CC29 /* 您的得分.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44BC9A1A77E9B800A0CC29 /* 您的得分.png */; };
 		3F6E23E91A388D6000EFAABA /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E23E71A388D6000EFAABA /* SplashScene.cpp */; };
 		3F6E23ED1A3892D500EFAABA /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E23EC1A3892D500EFAABA /* MainMenuScene.cpp */; };
 		3F6E23F81A389A1900EFAABA /* MainScene.csb in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E23F41A389A1900EFAABA /* MainScene.csb */; };
@@ -368,6 +377,13 @@
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
+		AE7866501A7750F300C30698 /* 第1关.png in Resources */ = {isa = PBXBuildFile; fileRef = AE78664B1A7750F300C30698 /* 第1关.png */; };
+		AE7866511A7750F300C30698 /* 返回主菜单.png in Resources */ = {isa = PBXBuildFile; fileRef = AE78664C1A7750F300C30698 /* 返回主菜单.png */; };
+		AE7866521A7750F300C30698 /* 您的得分.png in Resources */ = {isa = PBXBuildFile; fileRef = AE78664D1A7750F300C30698 /* 您的得分.png */; };
+		AE7866531A7750F300C30698 /* 胜利.png in Resources */ = {isa = PBXBuildFile; fileRef = AE78664E1A7750F300C30698 /* 胜利.png */; };
+		AE7866541A7750F300C30698 /* 下一关.png in Resources */ = {isa = PBXBuildFile; fileRef = AE78664F1A7750F300C30698 /* 下一关.png */; };
+		AE7EBE631A77E0AF00CA78A7 /* yellow_blink.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE7EBE611A77E0AF00CA78A7 /* yellow_blink.plist */; };
+		AE7EBE641A77E0AF00CA78A7 /* yellow_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7EBE621A77E0AF00CA78A7 /* yellow_blink.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -391,6 +407,15 @@
 		3F04AD401A39F13700F00576 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
 		3F04AD411A39F13700F00576 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		3F04AD431A39F29900F00576 /* game_over_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_over_bg.png; sourceTree = "<group>"; };
+		3F1D70E41A751BD400DAB676 /* bubbles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bubbles.plist; sourceTree = "<group>"; };
+		3F1D70E51A751BD400DAB676 /* bubbles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbles.png; sourceTree = "<group>"; };
+		3F44BC8F1A77E90B00A0CC29 /* 胜利.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "胜利.png"; sourceTree = "<group>"; };
+		3F44BC901A77E90B00A0CC29 /* yellow_blink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = yellow_blink.plist; sourceTree = "<group>"; };
+		3F44BC911A77E90B00A0CC29 /* yellow_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_blink.png; sourceTree = "<group>"; };
+		3F44BC951A77E96000A0CC29 /* 返回主菜单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回主菜单.png"; sourceTree = "<group>"; };
+		3F44BC971A77E98600A0CC29 /* 下一关.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下一关.png"; sourceTree = "<group>"; };
+		3F44BC991A77E9B800A0CC29 /* 第1关.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "第1关.png"; sourceTree = "<group>"; };
+		3F44BC9A1A77E9B800A0CC29 /* 您的得分.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "您的得分.png"; sourceTree = "<group>"; };
 		3F6E23E71A388D6000EFAABA /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		3F6E23E81A388D6000EFAABA /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		3F6E23EA1A38916700EFAABA /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
@@ -751,6 +776,13 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		606A4975BBA2A15E7A8EC014 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "/Applications/Cocos/frameworks/cocos2d-x/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<absolute>"; };
 		7C6F44AB94788DFDFB07133F /* libcocos2d Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d Mac.a"; path = "/Applications/Cocos/frameworks/cocos2d-x/prebuilt/mac/libcocos2d Mac.a"; sourceTree = "<absolute>"; };
+		AE78664B1A7750F300C30698 /* 第1关.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "第1关.png"; sourceTree = "<group>"; };
+		AE78664C1A7750F300C30698 /* 返回主菜单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回主菜单.png"; sourceTree = "<group>"; };
+		AE78664D1A7750F300C30698 /* 您的得分.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "您的得分.png"; sourceTree = "<group>"; };
+		AE78664E1A7750F300C30698 /* 胜利.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "胜利.png"; sourceTree = "<group>"; };
+		AE78664F1A7750F300C30698 /* 下一关.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下一关.png"; sourceTree = "<group>"; };
+		AE7EBE611A77E0AF00CA78A7 /* yellow_blink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = yellow_blink.plist; sourceTree = "<group>"; };
+		AE7EBE621A77E0AF00CA78A7 /* yellow_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_blink.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -874,6 +906,17 @@
 		3F6E23F01A389A1900EFAABA /* iphone */ = {
 			isa = PBXGroup;
 			children = (
+				3F44BC901A77E90B00A0CC29 /* yellow_blink.plist */,
+				3F44BC991A77E9B800A0CC29 /* 第1关.png */,
+				3F44BC9A1A77E9B800A0CC29 /* 您的得分.png */,
+				3F44BC971A77E98600A0CC29 /* 下一关.png */,
+				3F44BC8F1A77E90B00A0CC29 /* 胜利.png */,
+				3F44BC951A77E96000A0CC29 /* 返回主菜单.png */,
+				3F44BC911A77E90B00A0CC29 /* yellow_blink.png */,
+				3F1D70E41A751BD400DAB676 /* bubbles.plist */,
+				3F1D70E51A751BD400DAB676 /* bubbles.png */,
+				AE7EBE611A77E0AF00CA78A7 /* yellow_blink.plist */,
+				AE7EBE621A77E0AF00CA78A7 /* yellow_blink.png */,
 				3FD544B31A73F44700315FA9 /* playbg_sand_0000.jpg */,
 				3FD544B41A73F44700315FA9 /* playbg_sand_0001.jpg */,
 				3FD544B51A73F44700315FA9 /* playbg_sand_0002.jpg */,
@@ -1189,6 +1232,11 @@
 				3F04AD3C1A39F10A00F00576 /* try_again_pressed.png */,
 				3F04AD3D1A39F10A00F00576 /* try_again.png */,
 				3F6E23F91A389A2D00EFAABA /* splash_bg.png */,
+				AE78664B1A7750F300C30698 /* 第1关.png */,
+				AE78664C1A7750F300C30698 /* 返回主菜单.png */,
+				AE78664D1A7750F300C30698 /* 您的得分.png */,
+				AE78664E1A7750F300C30698 /* 胜利.png */,
+				AE78664F1A7750F300C30698 /* 下一关.png */,
 			);
 			path = iphone;
 			sourceTree = "<group>";
@@ -1384,6 +1432,7 @@
 				3FD544541A73EE7100315FA9 /* playbg_glow_0049.jpg in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				3FD545561A73F44800315FA9 /* playbg_sand_0019.jpg in Resources */,
+				AE7866531A7750F300C30698 /* 胜利.png in Resources */,
 				3FD5454F1A73F44800315FA9 /* playbg_sand_0012.jpg in Resources */,
 				3FD5459B1A73F44800315FA9 /* playbg_sand_0088.jpg in Resources */,
 				3FD544A01A73EE7100315FA9 /* playbg_glow_0125.jpg in Resources */,
@@ -1407,11 +1456,16 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				3FD545C41A73F44800315FA9 /* playbg_sand_0129.jpg in Resources */,
 				3FD544991A73EE7100315FA9 /* playbg_glow_0118.jpg in Resources */,
+				3F44BC941A77E90B00A0CC29 /* yellow_blink.png in Resources */,
 				3FD545C81A73F44800315FA9 /* playbg_sand_0133.jpg in Resources */,
 				3FD544531A73EE7100315FA9 /* playbg_glow_0048.jpg in Resources */,
 				3FD5449B1A73EE7100315FA9 /* playbg_glow_0120.jpg in Resources */,
+				AE7866511A7750F300C30698 /* 返回主菜单.png in Resources */,
+				AE7866541A7750F300C30698 /* 下一关.png in Resources */,
 				3FD544901A73EE7100315FA9 /* playbg_glow_0109.jpg in Resources */,
+				3F1D70E61A751BD400DAB676 /* bubbles.plist in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				3F44BC921A77E90B00A0CC29 /* 胜利.png in Resources */,
 				3FD545CD1A73F44800315FA9 /* playbg_sand_0138.jpg in Resources */,
 				3FD545501A73F44800315FA9 /* playbg_sand_0013.jpg in Resources */,
 				3FD544731A73EE7100315FA9 /* playbg_glow_0080.jpg in Resources */,
@@ -1427,6 +1481,7 @@
 				3FD544AA1A73EE7100315FA9 /* playbg_glow_0135.jpg in Resources */,
 				3FD545C91A73F44800315FA9 /* playbg_sand_0134.jpg in Resources */,
 				3FD545801A73F44800315FA9 /* playbg_sand_0061.jpg in Resources */,
+				3F44BC931A77E90B00A0CC29 /* yellow_blink.plist in Resources */,
 				3F6E23FA1A389A2D00EFAABA /* splash_bg.png in Resources */,
 				3FD544921A73EE7100315FA9 /* playbg_glow_0111.jpg in Resources */,
 				3FD5442F1A73EE7100315FA9 /* playbg_glow_0012.jpg in Resources */,
@@ -1478,6 +1533,7 @@
 				3FD545681A73F44800315FA9 /* playbg_sand_0037.jpg in Resources */,
 				3FD5459A1A73F44800315FA9 /* playbg_sand_0087.jpg in Resources */,
 				3FD545571A73F44800315FA9 /* playbg_sand_0020.jpg in Resources */,
+				3F1D70E71A751BD400DAB676 /* bubbles.png in Resources */,
 				3FD545D01A73F44800315FA9 /* playbg_sand_0141.jpg in Resources */,
 				3FD545651A73F44800315FA9 /* playbg_sand_0034.jpg in Resources */,
 				3FD545CE1A73F44800315FA9 /* playbg_sand_0139.jpg in Resources */,
@@ -1492,6 +1548,7 @@
 				3FD545821A73F44800315FA9 /* playbg_sand_0063.jpg in Resources */,
 				3FD545BC1A73F44800315FA9 /* playbg_sand_0121.jpg in Resources */,
 				3FD5449F1A73EE7100315FA9 /* playbg_glow_0124.jpg in Resources */,
+				AE7EBE641A77E0AF00CA78A7 /* yellow_blink.png in Resources */,
 				3FD545971A73F44800315FA9 /* playbg_sand_0084.jpg in Resources */,
 				3FD544811A73EE7100315FA9 /* playbg_glow_0094.jpg in Resources */,
 				3FD5445A1A73EE7100315FA9 /* playbg_glow_0055.jpg in Resources */,
@@ -1536,6 +1593,7 @@
 				3FD544621A73EE7100315FA9 /* playbg_glow_0063.jpg in Resources */,
 				3FD545751A73F44800315FA9 /* playbg_sand_0050.jpg in Resources */,
 				3FEA13811A485C5A002DC0E7 /* settings_pressed.png in Resources */,
+				AE7866521A7750F300C30698 /* 您的得分.png in Resources */,
 				3FD5454B1A73F44800315FA9 /* playbg_sand_0008.jpg in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				3FD544431A73EE7100315FA9 /* playbg_glow_0032.jpg in Resources */,
@@ -1602,6 +1660,7 @@
 				3FD544451A73EE7100315FA9 /* playbg_glow_0034.jpg in Resources */,
 				3FD5458E1A73F44800315FA9 /* playbg_sand_0075.jpg in Resources */,
 				3FD542681A73566D00315FA9 /* pink.plist in Resources */,
+				AE7866501A7750F300C30698 /* 第1关.png in Resources */,
 				3FD545961A73F44800315FA9 /* playbg_sand_0083.jpg in Resources */,
 				3FD544911A73EE7100315FA9 /* playbg_glow_0110.jpg in Resources */,
 				3FD5447D1A73EE7100315FA9 /* playbg_glow_0090.jpg in Resources */,
@@ -1631,6 +1690,7 @@
 				3FD544951A73EE7100315FA9 /* playbg_glow_0114.jpg in Resources */,
 				3FD544291A73EE7100315FA9 /* playbg_glow_0006.jpg in Resources */,
 				3FD544611A73EE7100315FA9 /* playbg_glow_0062.jpg in Resources */,
+				3F44BC961A77E96000A0CC29 /* 返回主菜单.png in Resources */,
 				3FD545B41A73F44800315FA9 /* playbg_sand_0113.jpg in Resources */,
 				3FD545BF1A73F44800315FA9 /* playbg_sand_0124.jpg in Resources */,
 				3FD545D11A73F44800315FA9 /* playbg_sand_0142.jpg in Resources */,
@@ -1644,6 +1704,7 @@
 				3FD545871A73F44800315FA9 /* playbg_sand_0068.jpg in Resources */,
 				3FD5459E1A73F44800315FA9 /* playbg_sand_0091.jpg in Resources */,
 				3FD545B71A73F44800315FA9 /* playbg_sand_0116.jpg in Resources */,
+				3F44BC9B1A77E9B800A0CC29 /* 第1关.png in Resources */,
 				3FD5449A1A73EE7100315FA9 /* playbg_glow_0119.jpg in Resources */,
 				3FD544B01A73EE7100315FA9 /* playbg_glow_0141.jpg in Resources */,
 				3FD545441A73F44800315FA9 /* playbg_sand_0001.jpg in Resources */,
@@ -1654,9 +1715,12 @@
 				3FD544AE1A73EE7100315FA9 /* playbg_glow_0139.jpg in Resources */,
 				3FD545631A73F44800315FA9 /* playbg_sand_0032.jpg in Resources */,
 				3FD544361A73EE7100315FA9 /* playbg_glow_0019.jpg in Resources */,
+				3F44BC981A77E98600A0CC29 /* 下一关.png in Resources */,
 				3FD5457A1A73F44800315FA9 /* playbg_sand_0055.jpg in Resources */,
 				3FD544861A73EE7100315FA9 /* playbg_glow_0099.jpg in Resources */,
+				AE7EBE631A77E0AF00CA78A7 /* yellow_blink.plist in Resources */,
 				3FD545451A73F44800315FA9 /* playbg_sand_0002.jpg in Resources */,
+				3F44BC9C1A77E9B800A0CC29 /* 您的得分.png in Resources */,
 				3FD5442C1A73EE7100315FA9 /* playbg_glow_0009.jpg in Resources */,
 				3FD544691A73EE7100315FA9 /* playbg_glow_0070.jpg in Resources */,
 				3FD542621A73566D00315FA9 /* pink.png in Resources */,

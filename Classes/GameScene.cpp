@@ -1,5 +1,6 @@
 #include "GameScene.h"
 #include "cocostudio/CocoStudio.h"
+#include "AppDelegate.h"
 #include "ui/CocosGUI.h"
 #include "GameOverScene.h"
 #include "Definitions.h"
@@ -105,21 +106,49 @@ bool GameScene::init()
 
     this->scheduleUpdate();
 
-    
     return true;
 }
 
-void GameScene::onScoreUpdate(int score)
+void GameScene::onScoreUpdate(int sc)
 {
+    score = sc;
     char scoreText[100];
     sprintf(scoreText, "Score: %d", score);
     scoreBoard->setString(scoreText);
-//    
-//    if (score >= 300) {
+    
+    //LIMENG
+    if (score >= 1000) {
+
+//        std::function<void(bool, const string&)>& func = CC_CALLBACK_2(GameScene::onScreenshotFinished, this);
+        utils::captureScreen(CC_CALLBACK_2(GameScene::onScreenshotFinished, this),"screenshot.png");
+        
 //        // 过关
+//        AppDelegate *app = (AppDelegate *)Application::getInstance();
+//        app->setScore(score);
+//        sprintf(scoreText, "Score: %d", score);
+//        
 //        auto scene = GameOverScene::createScene();
 //        Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
-//    }
+    }
+}
+
+void GameScene::onScreenshotFinished( bool b, const string& s )
+{
+    log("%s", s.c_str());
+    
+   // screenshotPath = s;
+    
+    char scoreText[100];
+    sprintf(scoreText, "Score: %d", score);
+    // 过关
+    AppDelegate *app = (AppDelegate *)Application::getInstance();
+    app->setScore(score);
+    sprintf(scoreText, "Score: %d", score);
+    //设置路径
+    app->setScreenshotpath(s);
+    
+    auto scene = GameOverScene::createScene();
+    Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
 
 
@@ -145,6 +174,8 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
 //        fishPool->ProcessTouch(locationInNode);
         touchedFish = fishPool->getTouchedFish(locationInNode);
+        
+        fishPool->CheckBlink(touchedFish);
         
         return true;
     }
@@ -331,6 +362,9 @@ void GameScene::AddFish(cocos2d::Ref *sender)
 void GameScene::GoToGameOverScene(float dt)
 {
     auto scene = GameOverScene::createScene();
+//    GameOverScene *layer = GameOverScene::create();
+//    layer->score = 1;
+    
     Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
 
@@ -338,3 +372,19 @@ void GameScene::update(float dt)
 {
 
 }
+
+//void GameScene::ScreenShoot()
+//{
+//    //CCSize size = CCDirector::sharedDirector()->getWinSize();
+//    Size visibleSize = Director::getInstance()->getVisibleSize();
+//    //定义一个屏幕大小的渲染纹理
+//    RenderTexture* pScreen = RenderTexture::create(visibleSize.width, visibleSize.height,Texture2D::PixelFormat::RGBA8888);
+//    Scene* pCurScene = Director::getInstance()->getRunningScene();
+//    //Point ancPos = pCurScene->getAnchorPoint();
+//    pScreen->begin();
+//    pCurScene->visit();
+//    pScreen->end();
+//
+//    pScreen->saveToFile("GameSceneScreenShot.jpg",Image::Format::JPG);
+//    CC_SAFE_DELETE(pScreen);
+//}
