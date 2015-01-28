@@ -24,6 +24,8 @@ public:
     
     Fish* GetFish(int col, int row);
     
+    int GetFishNum();
+    
     void clearFishes(int col, int row);
     
 //    void ProcessTouch(cocos2d::Point location);
@@ -44,6 +46,12 @@ public:
     
     void CheckBlink(Fish* fish);
     
+    void CheckTouched(Fish* fish);
+    
+    vector<Fish*> getRandomFishes(int fishesNum);
+    
+    void blink(float blinkFishPercentage);
+    
 private:
     int cols;
     
@@ -57,7 +65,9 @@ private:
     
     cocos2d::Vector<cocos2d::SpriteFrame*> bubbleFrames;
     
-    cocos2d::Vector<cocos2d::SpriteFrame*> blinkFrames;
+    cocos2d::Vector<cocos2d::SpriteFrame*> blinkFrames[5];
+    
+    cocos2d::Vector<cocos2d::SpriteFrame*> touchedFrames[5];
     
     cocos2d::Size visibleSize;
     
@@ -98,6 +108,9 @@ private:
     int findFishIndexByPoint(cocos2d::Point point);
     
     std::vector<int> findContinuousFishes(int index, int type);
+    
+    //定时调用函数
+    void timeUpdate( float fDelta );
     
 };
 

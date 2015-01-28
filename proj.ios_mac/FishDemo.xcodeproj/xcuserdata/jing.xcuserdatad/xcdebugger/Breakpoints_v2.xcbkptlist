@@ -29,7 +29,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "FishPool::fall2(std::vector&lt;int&gt; fs)"
+            landmarkName = "FishPool::getRandomFishes( int fishesNum )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -61,7 +61,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
             endingLineNumber = "195"
-            landmarkName = "GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)"
+            landmarkName = "GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

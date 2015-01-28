@@ -32,6 +32,9 @@ public:
     
     int GetType();
     
+    //int GetFishRow();
+    
+    
     void SetTarget(float x, float y);
     
     cocos2d::Sprite *fishSprite;

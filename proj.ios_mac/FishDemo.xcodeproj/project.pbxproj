@@ -342,6 +342,24 @@
 		3FEA13851A485E44002DC0E7 /* play_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEA13831A485E44002DC0E7 /* play_pressed.png */; };
 		3FEA13871A485E8E002DC0E7 /* play_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEA13861A485E8E002DC0E7 /* play_normal.png */; };
 		3FEA13891A4860AB002DC0E7 /* game_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEA13881A4860AB002DC0E7 /* game_bg.png */; };
+		3FFB45631A7931A400DA6B21 /* blue_touch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45591A7931A400DA6B21 /* blue_touch.plist */; };
+		3FFB45641A7931A400DA6B21 /* blue_touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB455A1A7931A400DA6B21 /* blue_touch.png */; };
+		3FFB45651A7931A400DA6B21 /* pink_touch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB455B1A7931A400DA6B21 /* pink_touch.plist */; };
+		3FFB45661A7931A400DA6B21 /* pink_touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB455C1A7931A400DA6B21 /* pink_touch.png */; };
+		3FFB45671A7931A400DA6B21 /* purple_touch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB455D1A7931A400DA6B21 /* purple_touch.plist */; };
+		3FFB45681A7931A400DA6B21 /* purple_touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB455E1A7931A400DA6B21 /* purple_touch.png */; };
+		3FFB45691A7931A400DA6B21 /* red_touch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB455F1A7931A400DA6B21 /* red_touch.plist */; };
+		3FFB456A1A7931A400DA6B21 /* red_touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45601A7931A400DA6B21 /* red_touch.png */; };
+		3FFB456B1A7931A400DA6B21 /* yellow_touch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45611A7931A400DA6B21 /* yellow_touch.plist */; };
+		3FFB456C1A7931A400DA6B21 /* yellow_touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45621A7931A400DA6B21 /* yellow_touch.png */; };
+		3FFB45751A79331F00DA6B21 /* blue_blink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB456D1A79331F00DA6B21 /* blue_blink.plist */; };
+		3FFB45761A79331F00DA6B21 /* blue_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB456E1A79331F00DA6B21 /* blue_blink.png */; };
+		3FFB45771A79331F00DA6B21 /* pink_blink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB456F1A79331F00DA6B21 /* pink_blink.plist */; };
+		3FFB45781A79331F00DA6B21 /* pink_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45701A79331F00DA6B21 /* pink_blink.png */; };
+		3FFB45791A79331F00DA6B21 /* purple_blink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45711A79331F00DA6B21 /* purple_blink.plist */; };
+		3FFB457A1A79331F00DA6B21 /* purple_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45721A79331F00DA6B21 /* purple_blink.png */; };
+		3FFB457B1A79331F00DA6B21 /* red_blink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45731A79331F00DA6B21 /* red_blink.plist */; };
+		3FFB457C1A79331F00DA6B21 /* red_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB45741A79331F00DA6B21 /* red_blink.png */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -738,6 +756,24 @@
 		3FEA13831A485E44002DC0E7 /* play_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_pressed.png; sourceTree = "<group>"; };
 		3FEA13861A485E8E002DC0E7 /* play_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_normal.png; sourceTree = "<group>"; };
 		3FEA13881A4860AB002DC0E7 /* game_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_bg.png; sourceTree = "<group>"; };
+		3FFB45591A7931A400DA6B21 /* blue_touch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = blue_touch.plist; sourceTree = "<group>"; };
+		3FFB455A1A7931A400DA6B21 /* blue_touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_touch.png; sourceTree = "<group>"; };
+		3FFB455B1A7931A400DA6B21 /* pink_touch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pink_touch.plist; sourceTree = "<group>"; };
+		3FFB455C1A7931A400DA6B21 /* pink_touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink_touch.png; sourceTree = "<group>"; };
+		3FFB455D1A7931A400DA6B21 /* purple_touch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = purple_touch.plist; sourceTree = "<group>"; };
+		3FFB455E1A7931A400DA6B21 /* purple_touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_touch.png; sourceTree = "<group>"; };
+		3FFB455F1A7931A400DA6B21 /* red_touch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = red_touch.plist; sourceTree = "<group>"; };
+		3FFB45601A7931A400DA6B21 /* red_touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_touch.png; sourceTree = "<group>"; };
+		3FFB45611A7931A400DA6B21 /* yellow_touch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = yellow_touch.plist; sourceTree = "<group>"; };
+		3FFB45621A7931A400DA6B21 /* yellow_touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_touch.png; sourceTree = "<group>"; };
+		3FFB456D1A79331F00DA6B21 /* blue_blink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = blue_blink.plist; sourceTree = "<group>"; };
+		3FFB456E1A79331F00DA6B21 /* blue_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_blink.png; sourceTree = "<group>"; };
+		3FFB456F1A79331F00DA6B21 /* pink_blink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pink_blink.plist; sourceTree = "<group>"; };
+		3FFB45701A79331F00DA6B21 /* pink_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink_blink.png; sourceTree = "<group>"; };
+		3FFB45711A79331F00DA6B21 /* purple_blink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = purple_blink.plist; sourceTree = "<group>"; };
+		3FFB45721A79331F00DA6B21 /* purple_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_blink.png; sourceTree = "<group>"; };
+		3FFB45731A79331F00DA6B21 /* red_blink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = red_blink.plist; sourceTree = "<group>"; };
+		3FFB45741A79331F00DA6B21 /* red_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_blink.png; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
@@ -906,6 +942,24 @@
 		3F6E23F01A389A1900EFAABA /* iphone */ = {
 			isa = PBXGroup;
 			children = (
+				3FFB456D1A79331F00DA6B21 /* blue_blink.plist */,
+				3FFB456E1A79331F00DA6B21 /* blue_blink.png */,
+				3FFB456F1A79331F00DA6B21 /* pink_blink.plist */,
+				3FFB45701A79331F00DA6B21 /* pink_blink.png */,
+				3FFB45711A79331F00DA6B21 /* purple_blink.plist */,
+				3FFB45721A79331F00DA6B21 /* purple_blink.png */,
+				3FFB45731A79331F00DA6B21 /* red_blink.plist */,
+				3FFB45741A79331F00DA6B21 /* red_blink.png */,
+				3FFB45591A7931A400DA6B21 /* blue_touch.plist */,
+				3FFB455A1A7931A400DA6B21 /* blue_touch.png */,
+				3FFB455B1A7931A400DA6B21 /* pink_touch.plist */,
+				3FFB455C1A7931A400DA6B21 /* pink_touch.png */,
+				3FFB455D1A7931A400DA6B21 /* purple_touch.plist */,
+				3FFB455E1A7931A400DA6B21 /* purple_touch.png */,
+				3FFB455F1A7931A400DA6B21 /* red_touch.plist */,
+				3FFB45601A7931A400DA6B21 /* red_touch.png */,
+				3FFB45611A7931A400DA6B21 /* yellow_touch.plist */,
+				3FFB45621A7931A400DA6B21 /* yellow_touch.png */,
 				3F44BC901A77E90B00A0CC29 /* yellow_blink.plist */,
 				3F44BC991A77E9B800A0CC29 /* 第1关.png */,
 				3F44BC9A1A77E9B800A0CC29 /* 您的得分.png */,
@@ -1428,7 +1482,9 @@
 				3FD544551A73EE7100315FA9 /* playbg_glow_0050.jpg in Resources */,
 				3FD5454D1A73F44800315FA9 /* playbg_sand_0010.jpg in Resources */,
 				3FD545B31A73F44800315FA9 /* playbg_sand_0112.jpg in Resources */,
+				3FFB457C1A79331F00DA6B21 /* red_blink.png in Resources */,
 				3FD545C31A73F44800315FA9 /* playbg_sand_0128.jpg in Resources */,
+				3FFB457B1A79331F00DA6B21 /* red_blink.plist in Resources */,
 				3FD544541A73EE7100315FA9 /* playbg_glow_0049.jpg in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				3FD545561A73F44800315FA9 /* playbg_sand_0019.jpg in Resources */,
@@ -1445,6 +1501,7 @@
 				3FD545621A73F44800315FA9 /* playbg_sand_0031.jpg in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				3FD544891A73EE7100315FA9 /* playbg_glow_0102.jpg in Resources */,
+				3FFB45641A7931A400DA6B21 /* blue_touch.png in Resources */,
 				3FD544801A73EE7100315FA9 /* playbg_glow_0093.jpg in Resources */,
 				3FD544721A73EE7100315FA9 /* playbg_glow_0079.jpg in Resources */,
 				3FD544311A73EE7100315FA9 /* playbg_glow_0014.jpg in Resources */,
@@ -1459,6 +1516,7 @@
 				3F44BC941A77E90B00A0CC29 /* yellow_blink.png in Resources */,
 				3FD545C81A73F44800315FA9 /* playbg_sand_0133.jpg in Resources */,
 				3FD544531A73EE7100315FA9 /* playbg_glow_0048.jpg in Resources */,
+				3FFB456B1A7931A400DA6B21 /* yellow_touch.plist in Resources */,
 				3FD5449B1A73EE7100315FA9 /* playbg_glow_0120.jpg in Resources */,
 				AE7866511A7750F300C30698 /* 返回主菜单.png in Resources */,
 				AE7866541A7750F300C30698 /* 下一关.png in Resources */,
@@ -1497,7 +1555,9 @@
 				3FD545B51A73F44800315FA9 /* playbg_sand_0114.jpg in Resources */,
 				3FD5455F1A73F44800315FA9 /* playbg_sand_0028.jpg in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				3FFB456C1A7931A400DA6B21 /* yellow_touch.png in Resources */,
 				3FD5454A1A73F44800315FA9 /* playbg_sand_0007.jpg in Resources */,
+				3FFB45771A79331F00DA6B21 /* pink_blink.plist in Resources */,
 				3FD5442D1A73EE7100315FA9 /* playbg_glow_0010.jpg in Resources */,
 				3FD5445D1A73EE7100315FA9 /* playbg_glow_0058.jpg in Resources */,
 				3FD545A31A73F44800315FA9 /* playbg_sand_0096.jpg in Resources */,
@@ -1505,6 +1565,7 @@
 				3FD5442B1A73EE7100315FA9 /* playbg_glow_0008.jpg in Resources */,
 				3FD5445B1A73EE7100315FA9 /* playbg_glow_0056.jpg in Resources */,
 				3FD544491A73EE7100315FA9 /* playbg_glow_0038.jpg in Resources */,
+				3FFB45761A79331F00DA6B21 /* blue_blink.png in Resources */,
 				3FD545BB1A73F44800315FA9 /* playbg_sand_0120.jpg in Resources */,
 				3FD545A11A73F44800315FA9 /* playbg_sand_0094.jpg in Resources */,
 				3FD545531A73F44800315FA9 /* playbg_sand_0016.jpg in Resources */,
@@ -1514,6 +1575,7 @@
 				3FD545CA1A73F44800315FA9 /* playbg_sand_0135.jpg in Resources */,
 				3FD545731A73F44800315FA9 /* playbg_sand_0048.jpg in Resources */,
 				3FD545921A73F44800315FA9 /* playbg_sand_0079.jpg in Resources */,
+				3FFB45651A7931A400DA6B21 /* pink_touch.plist in Resources */,
 				3FD544561A73EE7100315FA9 /* playbg_glow_0051.jpg in Resources */,
 				3FD544781A73EE7100315FA9 /* playbg_glow_0085.jpg in Resources */,
 				3FD545951A73F44800315FA9 /* playbg_sand_0082.jpg in Resources */,
@@ -1532,6 +1594,7 @@
 				3FD5458D1A73F44800315FA9 /* playbg_sand_0074.jpg in Resources */,
 				3FD545681A73F44800315FA9 /* playbg_sand_0037.jpg in Resources */,
 				3FD5459A1A73F44800315FA9 /* playbg_sand_0087.jpg in Resources */,
+				3FFB45671A7931A400DA6B21 /* purple_touch.plist in Resources */,
 				3FD545571A73F44800315FA9 /* playbg_sand_0020.jpg in Resources */,
 				3F1D70E71A751BD400DAB676 /* bubbles.png in Resources */,
 				3FD545D01A73F44800315FA9 /* playbg_sand_0141.jpg in Resources */,
@@ -1543,6 +1606,7 @@
 				3F7BA15F1A432D930036C163 /* block_purple.png in Resources */,
 				3FD544941A73EE7100315FA9 /* playbg_glow_0113.jpg in Resources */,
 				3FD5448A1A73EE7100315FA9 /* playbg_glow_0103.jpg in Resources */,
+				3FFB45691A7931A400DA6B21 /* red_touch.plist in Resources */,
 				3FEA13801A485C5A002DC0E7 /* settings_normal.png in Resources */,
 				3FD544A61A73EE7100315FA9 /* playbg_glow_0131.jpg in Resources */,
 				3FD545821A73F44800315FA9 /* playbg_sand_0063.jpg in Resources */,
@@ -1550,6 +1614,7 @@
 				3FD5449F1A73EE7100315FA9 /* playbg_glow_0124.jpg in Resources */,
 				AE7EBE641A77E0AF00CA78A7 /* yellow_blink.png in Resources */,
 				3FD545971A73F44800315FA9 /* playbg_sand_0084.jpg in Resources */,
+				3FFB45631A7931A400DA6B21 /* blue_touch.plist in Resources */,
 				3FD544811A73EE7100315FA9 /* playbg_glow_0094.jpg in Resources */,
 				3FD5445A1A73EE7100315FA9 /* playbg_glow_0055.jpg in Resources */,
 				3FD5458C1A73F44800315FA9 /* playbg_sand_0073.jpg in Resources */,
@@ -1565,6 +1630,7 @@
 				3FD545781A73F44800315FA9 /* playbg_sand_0053.jpg in Resources */,
 				3FD543921A73EA9300315FA9 /* playbg.jpg in Resources */,
 				3FD545771A73F44800315FA9 /* playbg_sand_0052.jpg in Resources */,
+				3FFB45751A79331F00DA6B21 /* blue_blink.plist in Resources */,
 				3FD545861A73F44800315FA9 /* playbg_sand_0067.jpg in Resources */,
 				3FD5444C1A73EE7100315FA9 /* playbg_glow_0041.jpg in Resources */,
 				3FD545CC1A73F44800315FA9 /* playbg_sand_0137.jpg in Resources */,
@@ -1590,6 +1656,7 @@
 				3FD544601A73EE7100315FA9 /* playbg_glow_0061.jpg in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				3FD545A61A73F44800315FA9 /* playbg_sand_0099.jpg in Resources */,
+				3FFB456A1A7931A400DA6B21 /* red_touch.png in Resources */,
 				3FD544621A73EE7100315FA9 /* playbg_glow_0063.jpg in Resources */,
 				3FD545751A73F44800315FA9 /* playbg_sand_0050.jpg in Resources */,
 				3FEA13811A485C5A002DC0E7 /* settings_pressed.png in Resources */,
@@ -1671,9 +1738,11 @@
 				3FD5443F1A73EE7100315FA9 /* playbg_glow_0028.jpg in Resources */,
 				3FD5447F1A73EE7100315FA9 /* playbg_glow_0092.jpg in Resources */,
 				3FD545B91A73F44800315FA9 /* playbg_sand_0118.jpg in Resources */,
+				3FFB45681A7931A400DA6B21 /* purple_touch.png in Resources */,
 				3FD5426A1A73566D00315FA9 /* red.plist in Resources */,
 				3FD544791A73EE7100315FA9 /* playbg_glow_0086.jpg in Resources */,
 				3FD545A91A73F44800315FA9 /* playbg_sand_0102.jpg in Resources */,
+				3FFB45661A7931A400DA6B21 /* pink_touch.png in Resources */,
 				3FD544A91A73EE7100315FA9 /* playbg_glow_0134.jpg in Resources */,
 				3FD545491A73F44800315FA9 /* playbg_sand_0006.jpg in Resources */,
 				3FEA13851A485E44002DC0E7 /* play_pressed.png in Resources */,
@@ -1711,6 +1780,7 @@
 				3FD545B01A73F44800315FA9 /* playbg_sand_0109.jpg in Resources */,
 				3FD5457B1A73F44800315FA9 /* playbg_sand_0056.jpg in Resources */,
 				3FD545691A73F44800315FA9 /* playbg_sand_0038.jpg in Resources */,
+				3FFB45781A79331F00DA6B21 /* pink_blink.png in Resources */,
 				3FD5454E1A73F44800315FA9 /* playbg_sand_0011.jpg in Resources */,
 				3FD544AE1A73EE7100315FA9 /* playbg_glow_0139.jpg in Resources */,
 				3FD545631A73F44800315FA9 /* playbg_sand_0032.jpg in Resources */,
@@ -1739,12 +1809,14 @@
 				3FD545BE1A73F44800315FA9 /* playbg_sand_0123.jpg in Resources */,
 				3FD5456A1A73F44800315FA9 /* playbg_sand_0039.jpg in Resources */,
 				3FD544301A73EE7100315FA9 /* playbg_glow_0013.jpg in Resources */,
+				3FFB45791A79331F00DA6B21 /* purple_blink.plist in Resources */,
 				3FD5456D1A73F44800315FA9 /* playbg_sand_0042.jpg in Resources */,
 				3FD545A01A73F44800315FA9 /* playbg_sand_0093.jpg in Resources */,
 				3FD545A41A73F44800315FA9 /* playbg_sand_0097.jpg in Resources */,
 				3FD544321A73EE7100315FA9 /* playbg_glow_0015.jpg in Resources */,
 				3FD544681A73EE7100315FA9 /* playbg_glow_0069.jpg in Resources */,
 				3F6E23F81A389A1900EFAABA /* MainScene.csb in Resources */,
+				3FFB457A1A79331F00DA6B21 /* purple_blink.png in Resources */,
 				3FD5449C1A73EE7100315FA9 /* playbg_glow_0121.jpg in Resources */,
 				3FD544A31A73EE7100315FA9 /* playbg_glow_0128.jpg in Resources */,
 				3FD545AB1A73F44800315FA9 /* playbg_sand_0104.jpg in Resources */,

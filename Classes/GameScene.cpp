@@ -105,8 +105,24 @@ bool GameScene::init()
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 
     this->scheduleUpdate();
+    
+    //LIMENG
+   // auto timer = Director::getInstance()->getScheduler();
+
+    //std::function<void(bool, const string&)>& func = CC_CALLBACK_2(GameScene::onScreenshotFinished, this);
+    //utils::captureScreen(CC_CALLBACK_2(GameScene::onScreenshotFinished, this),"screenshot.png");
+    //void schedule(const std::function<void(float)>& callback, float interval, const std::string &key);
+    //timer->schedule(&FishPool::CheckBlink, 1.0f, NULL);
+    
+    this->schedule(schedule_selector(GameScene::fishBlink), BLINK_INTERVAL);
 
     return true;
+}
+
+void GameScene::fishBlink(float deltaTime)
+{
+
+    fishPool->blink(BLINK_FISH_PERCENTAGE);
 }
 
 void GameScene::onScoreUpdate(int sc)
@@ -175,7 +191,8 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 //        fishPool->ProcessTouch(locationInNode);
         touchedFish = fishPool->getTouchedFish(locationInNode);
         
-        fishPool->CheckBlink(touchedFish);
+    //fishPool->CheckBlink(touchedFish);
+        fishPool->CheckTouched(touchedFish);
         
         return true;
     }
@@ -370,7 +387,7 @@ void GameScene::GoToGameOverScene(float dt)
 
 void GameScene::update(float dt)
 {
-
+    
 }
 
 //void GameScene::ScreenShoot()

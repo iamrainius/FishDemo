@@ -37,6 +37,7 @@ private:
     void onSwappingFinished1();
     void onSwappingFinished2();
     void onScreenshotFinished(bool b, const string& s);
+    void fishBlink(float deltaTime);
     
     void updateSwapping(int which);
     

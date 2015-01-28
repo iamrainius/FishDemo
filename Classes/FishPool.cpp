@@ -181,11 +181,86 @@ bool FishPool::checkRemoveFishes(std::vector<int> seeds)
 
 void FishPool::CheckBlink( Fish* fish )
 {
-    auto blinkAnimation = Animation::createWithSpriteFrames(blinkFrames,0.06f);
-    auto animate = Animate::create(blinkAnimation);
-    auto sequence = Sequence::create(animate, NULL, NULL);
-    fish->fishSprite->runAction(sequence);
+    if(fish != NULL)
+    {
+        auto blinkAnimation = Animation::createWithSpriteFrames(blinkFrames[fish->type],0.06f);
+        auto animate = Animate::create(blinkAnimation);
+        auto sequence = Sequence::create(animate, NULL, NULL);
+        fish->fishSprite->runAction(sequence);
+    }
 }
+
+void FishPool::blink(float percentage)
+{
+    //统计当前剩下鱼的数量
+    int fishNum = rows * cols;
+    for( int i=0; i< rows * cols; i++ )
+    {
+        if(fishes[i]==NULL)
+        {
+            fishNum--;
+        }
+    }
+    
+    log("fish number: %d", fishNum);
+    
+    //计算出要眨眼的鱼的数量
+    if(fishNum * percentage>1){
+        fishNum = fishNum * percentage;
+        
+    }else{
+        fishNum = 1;
+    }
+    
+    log("blink number: %d", fishNum);
+    
+    vector<Fish*> randomFishes = this->getRandomFishes(fishNum);
+    
+    for( int i=0; i<randomFishes.size(); i++ )
+    {
+        //执行眨眼
+        this->CheckBlink(randomFishes[i]);
+    }
+    log("this is fishBlink function.");
+}
+
+int FishPool::GetFishNum()
+{
+    return rows * cols;
+}
+
+vector<Fish*> FishPool::getRandomFishes( int fishesNum )
+{
+    vector<Fish*> randomFishes;
+    for (int i = 0; i < fishesNum; i++) {
+        int index = random(0,cols*rows-1);
+        vector<Fish*>::iterator it;
+        for (it = randomFishes.begin(); it != randomFishes.end(); it++) {
+            if (fishes[index] == *it) {
+                break;
+            }
+        }
+        
+        if (it == randomFishes.end() && fishes[index] != NULL) {
+            randomFishes.push_back(fishes[index]);
+        }
+    }
+    
+    return randomFishes;
+}
+
+
+void FishPool::CheckTouched( Fish* fish )
+{
+    if (fish!=NULL)
+    {
+        auto touchedAnimation = Animation::createWithSpriteFrames(touchedFrames[fish->type],0.06f);
+        auto animate = Animate::create(touchedAnimation);
+        auto sequence = Sequence::create(animate, NULL, NULL);
+        fish->fishSprite->runAction(sequence);
+    }
+}
+
 
 void FishPool::funCallback(int index, std::vector<int>& fs, int total)
 {
@@ -450,6 +525,12 @@ void FishPool::setupFrames()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pink.plist", "pink.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("bubbles.plist", "bubbles.png");
     
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("yellow_touch.plist", "yellow_touch.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("red_touch.plist", "red_touch.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("purple_touch.plist", "purple_touch.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("blue_touch.plist", "blue_touch.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pink_touch.plist", "pink_touch.png");
+    
     char bbFilename[20];
     
     for (int j = 1; j <= 30; j++) {
@@ -458,15 +539,31 @@ void FishPool::setupFrames()
         bubbleFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(bbFilename));
     }
     
+    //鱼的眨眼动画
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("blue_blink.plist", "blue_blink.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("red_blink.plist", "red_blink.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pink_blink.plist", "pink_blink.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("yellow_blink.plist", "yellow_blink.png");
-    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00000.png"));
-    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00001.png"));
-    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00002.png"));
-    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00003.png"));
-    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00004.png"));
-    blinkFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("yellow_blink_00005.png"));
-
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("purple_blink.plist", "purple_blink.png");
     
+    char blinkFile[20];
+    string blinks[5] = {
+        "blue_blink_000%02d.png",
+        "red_blink_000%02d.png",
+        "pink_blink_000%02d.png",
+        "yellow_blink_000%02d.png",
+        "purple_blink_000%02d.png"
+    };
+    
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 6; j++) {
+            sprintf(blinkFile, blinks[i].c_str(), j);
+            log("%s", blinkFile);
+            blinkFrames[i].pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(blinkFile));
+        }
+    }
+
+    //鱼的点击膨胀动画
     char filename[20];
     string patterns[5] = {
         "blue_000%02d.png",
@@ -481,6 +578,22 @@ void FishPool::setupFrames()
             sprintf(filename, patterns[i].c_str(), j);
             log("%s", filename);
             fishFrames[i].pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(filename));
+        }
+    }
+    
+    string touchedPatterns[5] = {
+        "blue_touch_000%02d.png",
+        "red_touch_000%02d.png",
+        "pink_touch_000%02d.png",
+        "yellow_touch_000%02d.png",
+        "purple_touch_000%02d.png"
+    };
+    
+    for (int i = 0; i < 5; i++) {
+        for (int j = 24; j < 42; j++) {
+            sprintf(filename, touchedPatterns[i].c_str(), j);
+            log("%s", filename);
+            touchedFrames[i].pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(filename));
         }
     }
 }
